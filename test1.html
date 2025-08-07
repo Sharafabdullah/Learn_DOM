@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    #container {
+      width: 400px;
+      height: 400px;
+      position: relative;
+      background: yellow;
+    }
+    #animate {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      background-color: red;
+    }
+  </style>
+  <body>
+    <p><button onclick="myMove()">Click Me</button></p>
+
+    <div id="container">
+      <div id="animate"></div>
+    </div>
+
+    <p><button onclick="anotherFunction()">Click Me</button></p>
+
+    <script>
+      function myMove() {
+        let id = null;
+        const elem = document.querySelectorAll('div > div');
+        elem[0].style.color = 'blue';
+
+        let pos = 0;
+        clearInterval(id);
+        id = setInterval(frame, 5);
+        function frame() {
+          if (pos == 350) {
+            clearInterval(id);
+          } else {
+            pos++;
+            elem.style.top = pos + 'px';
+            elem.style.left = pos + 'px';
+          }
+        }
+      }
+      window.addEventListener('resize', function () {
+        console.log('Window resized!');
+      });
+
+      document.addEventListener('keydown', function (event) {
+        const elem = document.getElementById('animate');
+        let top = parseInt(elem.style.top) || 0;
+        let left = parseInt(elem.style.left) || 0;
+        const step = 10;
+        switch (event.key) {
+          case 'ArrowUp':
+            if (top - step >= 0) elem.style.top = top - step + 'px';
+            break;
+          case 'ArrowDown':
+            if (top + step <= 350) elem.style.top = top + step + 'px';
+            break;
+          case 'ArrowLeft':
+            if (left - step >= 0) elem.style.left = left - step + 'px';
+            break;
+          case 'ArrowRight':
+            if (left + step <= 350) elem.style.left = left + step + 'px';
+            break;
+        }
+      });
+
+      let x = document.querySelector('#animate');
+      x.addEventListener('mouseover', function () {
+        console.log('Mouse over the element!');
+        alert('Element clicked!');
+      });
+
+      function anotherFunction() {
+        const elem = document.getElementById('animate');
+        elem.style.backgroundColor = 'blue';
+      }
+    </script>
+  </body>
+</html>

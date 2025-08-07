@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive DOM Tutorial</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link href="styles.css?v=1.5" rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="#introduction">Introduction</a>
+        <a href="#methods">Methods</a>
+        <a href="#document">Document</a>
+        <a href="#elements">Elements</a>
+        <a href="#html">HTML</a>
+        <a href="#css">CSS</a>
+        <a href="#animations">Animations</a>
+        <a href="#events">Events</a>
+        <a href="#listeners">Listeners</a>
+        <a href="#navigation">Navigation</a>
+        <a href="#nodes">Nodes</a>
+        <a href="#collections">Collections</a>
+        <a href="#nodelists">NodeLists</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="introduction">
+        <div data-background-placeholder></div>
+        <h2 class="section-title"><i class="fas fa-tree"></i> Introduction</h2>
+        <p>
+          The HTML DOM is a programming interface for web documents. Experiment
+          with DOM manipulation below.
+        </p>
+        <div class="code-playground interactive-demo">
+          <div class="editor-container">
+            <div id="jsEditor"></div>
+            <button onclick="runCode()" class="run-button">
+              <i class="fas fa-play"></i> Run Code
+            </button>
+          </div>
+          <div class="visualization-container">
+            <div id="domTree" class="dom-tree"></div>
+            <div id="sandbox" class="sandbox">
+              <div class="sandbox-content">
+                <h3>Preview</h3>
+                <div id="previewArea"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="methods">
+        <h2 class="section-title"><i class="fas fa-search"></i> Methods</h2>
+        <p>
+          JavaScript provides several methods to select elements from the DOM.
+        </p>
+        <div class="code-playground">
+          <p>Try selecting elements in the sample HTML below:</p>
+          <div class="live-preview" id="methods-preview">
+            <p id="p1">This is a paragraph with an ID.</p>
+            <p class="content">This is a paragraph with a class.</p>
+            <span>This is a span.</span>
+          </div>
+          <pre><code>document.getElementById('p1');</code></pre>
+          <pre><code>document.getElementsByClassName('content');</code></pre>
+          <pre><code>document.getElementsByTagName('span');</code></pre>
+          <pre><code>document.querySelector('.content');</code></pre>
+        </div>
+      </section>
+
+      <section id="document">
+        <h2 class="section-title">
+          <i class="fas fa-file-alt"></i> Document Object
+        </h2>
+        <p>
+          The `document` object represents your web page. It's the entry point
+          to the DOM.
+        </p>
+        <div class="code-playground">
+          <button onclick="logDocumentProperties()">
+            Log Document Properties
+          </button>
+          <div class="live-preview" id="document-preview"></div>
+          <script>
+            function logDocumentProperties() {
+              const preview = document.getElementById('document-preview');
+              preview.innerHTML = `Title: ${document.title}<br>Body ID: ${document.body.id}`;
+            }
+          </script>
+        </div>
+      </section>
+
+      <section id="elements">
+        <h2 class="section-title">
+          <i class="fas fa-puzzle-piece"></i> Elements
+        </h2>
+        <p>You can find, change, add, and delete HTML elements.</p>
+        <div class="code-playground">
+          <div class="live-preview" id="elements-preview">
+            <p>An existing paragraph.</p>
+          </div>
+          <button onclick="addElement()">Add Element</button>
+          <button onclick="removeElement()">Remove Last Element</button>
+          <script>
+            function addElement() {
+              const newEl = document.createElement('p');
+              newEl.textContent = 'A new paragraph.';
+              document.getElementById('elements-preview').appendChild(newEl);
+            }
+            function removeElement() {
+              const container = document.getElementById('elements-preview');
+              if (container.lastElementChild) {
+                container.removeChild(container.lastElementChild);
+              }
+            }
+          </script>
+        </div>
+      </section>
+    </main>
+
+    <div class="dark-mode-toggle" id="darkModeToggle">
+      <i class="fas fa-moon"></i>
+    </div>
+
+    <script src="javascript.js"></script>
+  </body>
+</html>
