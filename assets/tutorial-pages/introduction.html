@@ -1,0 +1,104 @@
+<div class="section-explaination">
+  <h2 class="section-title">
+    <i class="fas fa-tree"></i>
+    Introduction to the <span class="highlight">HTML DOM</span>
+  </h2>
+
+  <p class="section-paragraph">
+    The
+    <span class="highlight">HTML DOM (Document Object Model)</span> is the
+    browser's programming interface for HTML. When a web page is loaded, the
+    browser creates a DOM of the page, which is an object-oriented
+    representation of the web page that can be modified with a scripting
+    language like JavaScript.
+  </p>
+
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-sitemap"></i> What is the DOM?
+      </h3>
+      <p>
+        The DOM represents the document as a logical tree of nodes. Each node is
+        an object representing a part of the document, like an element, an
+        attribute, or a piece of text. This structured representation allows you
+        to interact with the page dynamically and create powerful web
+        applications.
+      </p>
+    </div>
+
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-bolt"></i> Why is it Powerful?
+      </h3>
+      <ul class="feature-list">
+        <li>
+          <i class="fas fa-check-circle"></i> Change all HTML elements in the
+          page
+        </li>
+        <li>
+          <i class="fas fa-check-circle"></i> Change all HTML attributes in the
+          page
+        </li>
+        <li>
+          <i class="fas fa-check-circle"></i> Change all CSS styles in the page
+        </li>
+        <li>
+          <i class="fas fa-check-circle"></i> Remove or add HTML elements and
+          attributes
+        </li>
+        <li>
+          <i class="fas fa-check-circle"></i> React to all existing HTML events
+        </li>
+        <li><i class="fas fa-check-circle"></i> Create new HTML events</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example</span
+    >
+    <p>
+      Below, we create a simple HTML structure in the preview area, then use
+      <code>getElementById</code> to find the <code>&lt;p&gt;</code> element
+      with the ID <code>demo</code> and change its content using
+      <code>innerHTML</code>. Watch how the DOM tree visualization updates to
+      reflect the changes!
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="introduction1"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="introduction1"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="introduction1"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="introduction1"></div>
+  </div>
+</div>

@@ -1,0 +1,310 @@
+<div class="section-explaination">
+  <h2 class="section-title">
+    <i class="fas fa-file-alt"></i>
+    The <span class="highlight">HTML DOM Document Object</span>
+  </h2>
+  <p class="section-paragraph">
+    The <span class="highlight">document</span> object is the root of the HTML
+    DOM and the owner of all other objects in your web page. If you want to
+    access or manipulate any element in an HTML page, you always start with the
+    <code>document</code> object. It represents your web page and provides
+    methods and properties to find, change, add, or remove elements, as well as
+    to handle events and interact with the browser.
+  </p>
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-search"></i> Finding HTML Elements
+      </h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>document.getElementById(id)</code></td>
+            <td>Find an element by element id</td>
+          </tr>
+          <tr>
+            <td><code>document.getElementsByTagName(name)</code></td>
+            <td>Find elements by tag name</td>
+          </tr>
+          <tr>
+            <td><code>document.getElementsByClassName(name)</code></td>
+            <td>Find elements by class name</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Example: getElementById -->
+  </div>
+  <!-- end section-grid__item -->
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Finding Elements by ID
+    </span>
+    <p>
+      The most common way to find an element is by its unique
+      <code>id</code> attribute. The <code>getElementById</code> method returns
+      a single element or <code>null</code> if not found.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="elements1"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="elements1"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="elements1"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="elements1"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-edit"></i> Changing HTML Elements
+      </h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Property/Method</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>element.innerHTML = new html</code></td>
+            <td>Change the inner HTML of an element</td>
+          </tr>
+          <tr>
+            <td><code>element.attribute = value</code></td>
+            <td>Change the attribute value of an HTML element</td>
+          </tr>
+          <tr>
+            <td><code>element.style.property = value</code></td>
+            <td>Change the style of an HTML element</td>
+          </tr>
+          <tr>
+            <td><code>element.setAttribute(attr, value)</code></td>
+            <td>Change the attribute value of an HTML element</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-plus"></i> Adding and Deleting Elements
+      </h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>document.createElement(element)</code></td>
+            <td>Create an HTML element</td>
+          </tr>
+          <tr>
+            <td><code>document.removeChild(element)</code></td>
+            <td>Remove an HTML element</td>
+          </tr>
+          <tr>
+            <td><code>document.appendChild(element)</code></td>
+            <td>Add an HTML element</td>
+          </tr>
+          <tr>
+            <td><code>document.replaceChild(new, old)</code></td>
+            <td>Replace an HTML element</td>
+          </tr>
+          <tr>
+            <td><code>document.write(text)</code></td>
+            <td>Write into the HTML output stream</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-bolt"></i> Adding Event Handlers
+      </h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <code
+                >document.getElementById(id).onclick =
+                function(){`{`}code{`}`}</code
+              >
+            </td>
+            <td>Add event handler code to an onclick event</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-database"></i> Common Document Properties
+      </h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>Description</th>
+            <th>DOM Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>document.anchors</code></td>
+            <td>Deprecated. Do not use it.</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td><code>document.applets</code></td>
+            <td>Deprecated. Do not use it.</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td><code>document.baseURI</code></td>
+            <td>Returns the absolute base URI of the document</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td><code>document.body</code></td>
+            <td>Returns the <code>&lt;body&gt;</code> element</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td><code>document.cookie</code></td>
+            <td>Returns the document's cookie</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <td><code>document.doctype</code></td>
+            <td>Returns the document's doctype</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td><code>document.documentElement</code></td>
+            <td>Returns the <code>&lt;html&gt;</code> element</td>
+            <td>3</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-info-circle"></i> More Useful Info
+      </h3>
+      <ul class="feature-list">
+        <li>
+          <i class="fas fa-info"></i> The <code>document</code> object is
+          available globally in all browsers.
+        </li>
+        <li>
+          <i class="fas fa-info"></i> You can use
+          <code>console.dir(document)</code> to explore all its properties in
+          the browser console.
+        </li>
+        <li>
+          <i class="fas fa-info"></i> Modern JavaScript frameworks often
+          interact with the DOM via the <code>document</code> object.
+        </li>
+        <li>
+          <i class="fas fa-info"></i> The <code>document</code> object is part
+          of the
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Document"
+            target="_blank"
+            >Document interface</a
+          >
+          on MDN.
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Using the
+      <code>document</code> Object</span
+    >
+    <p>
+      Try the code below to see how you can use the
+      <code>document</code> object to find, change, and add elements
+      dynamically. Edit the code and click <strong>Run Code</strong> to see the
+      result and the updated DOM tree!
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="document1"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="document1"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="document1"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="document1"></div>
+  </div>
+</div>

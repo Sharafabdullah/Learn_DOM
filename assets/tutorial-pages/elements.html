@@ -1,0 +1,236 @@
+<div class="section-explaination">
+  <h2 class="section-title">
+    <i class="fas fa-puzzle-piece"></i>
+    Finding and Accessing <span class="highlight">DOM Elements</span>
+  </h2>
+  <p class="section-paragraph">
+    To manipulate HTML with JavaScript, you first need to
+    <strong>find</strong> the elements you want to work with. The DOM provides
+    several powerful methods to access elements by <code>id</code>,
+    <code>tag name</code>, <code>class name</code>, <code>CSS selectors</code>,
+    or <code>object collections</code>.<br /><br />
+    <strong>Common ways to find elements:</strong>
+  </p>
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h3 class="section-subtitle"><i class="fas fa-id-badge"></i> By ID</h3>
+      <p>Find a single element by its unique <code>id</code> attribute.</p>
+      <code>const el = document.getElementById("intro");</code>
+    </div>
+    <div class="section-grid__item">
+      <h3 class="section-subtitle"><i class="fas fa-tags"></i> By Tag Name</h3>
+      <p>Find all elements with a given tag name.</p>
+      <code>const ps = document.getElementsByTagName("p");</code>
+    </div>
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-list"></i> By Class Name
+      </h3>
+      <p>Find all elements with a specific class.</p>
+      <code>const items = document.getElementsByClassName("intro");</code>
+    </div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Finding Elements by Tag
+      Name</span
+    >
+    <p>
+      The <code>getElementsByTagName</code> method returns a
+      <strong>collection</strong> of all elements with the specified tag name.
+      Access individual elements using array-like indexing.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="elements2"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="elements2"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="elements2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="elements2"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Finding Elements by Tag
+      Name (within a specific element)</span
+    >
+    <p>
+      You can also find elements within a specific parent element by first
+      getting the parent, then calling
+      <code>getElementsByTagName</code> on it.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="elements3"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="elements3"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="elements3"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="elements3"></div>
+  </div>
+</div>
+
+<div class="section-grid">
+  <div class="section-grid__item">
+    <h3 class="section-subtitle"><i class="fas fa-list"></i> By Class Name</h3>
+    <p>Find all elements with a specific class.</p>
+    <code>const items = document.getElementsByClassName("intro");</code>
+  </div>
+
+  <!-- Example: getElementsByClassName -->
+</div>
+
+<!-- <div class="section-example">
+  <span class="section-subtitle"
+    ><i class="fas fa-terminal"></i> Live Example: Finding Elements by Class
+    Name</span
+  >
+  <p>
+    The <code>getElementsByClassName</code> method returns all elements that
+    have the specified class name. Like <code>getElementsByTagName</code>, it
+    returns a collection.
+  </p>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="elements4"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="elements4"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="elements4"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="elements4"></div>
+  </div>
+</div> -->
+
+<!-- <div class="section-grid">
+  <div class="section-grid__item">
+    <h3 class="section-subtitle">
+      <i class="fas fa-hashtag"></i> By CSS Selector
+    </h3>
+    <p>Find all elements matching a CSS selector.</p>
+    <code>const items = document.querySelectorAll("p.intro");</code>
+  </div>
+  <div class="section-grid__item">
+    <h3 class="section-subtitle">
+      <i class="fas fa-object-group"></i> By Object Collections
+    </h3>
+    <p>
+      Access elements via built-in collections like
+      <code>forms</code>, <code>images</code>, etc.
+    </p>
+    <code>const form = document.forms["frm1"];</code>
+  </div>
+</div>
+<div class="section-grid">
+  <div class="section-grid__item">
+    <h3 class="section-subtitle">
+      <i class="fas fa-info-circle"></i> More Useful Info
+    </h3>
+    <ul class="feature-list">
+      <li>
+        <i class="fas fa-info"></i>
+        <code>getElementById</code> returns a single element or
+        <code>null</code> if not found.
+      </li>
+      <li>
+        <i class="fas fa-info"></i>
+        <code>getElementsByTagName</code>, <code>getElementsByClassName</code>,
+        and <code>querySelectorAll</code> return
+        <strong>collections</strong> (array-like, but not arrays).
+      </li>
+      <li>
+        <i class="fas fa-info"></i>
+        <code>querySelector</code> returns only the
+        <strong>first</strong> matching element.
+      </li>
+      <li>
+        <i class="fas fa-info"></i> You can loop through collections with
+        <code>for...of</code> or <code>forEach</code> (after converting to an
+        array).
+      </li>
+      <li>
+        <i class="fas fa-info"></i> Object collections include
+        <code>document.forms</code>, <code>document.images</code>,
+        <code>document.links</code>, etc.
+      </li>
+      <li>
+        <i class="fas fa-info"></i> See
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Web/API/Document"
+          target="_blank"
+          >MDN: Document API</a
+        >
+        for more.
+      </li>
+    </ul>
+  </div>
+</div> -->

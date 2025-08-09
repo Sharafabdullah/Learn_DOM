@@ -1,0 +1,355 @@
+<div class="section-explaination">
+  <h2 class="section-title">
+    <i class="fas fa-magic"></i>
+    HTML DOM Animations
+  </h2>
+
+  <p class="section-paragraph">
+    Learn to create HTML animations using JavaScript. JavaScript animations
+    provide complete control over timing, movement, and visual effects, allowing
+    you to create smooth and interactive animations.
+  </p>
+
+  <h3 class="section-subtitle">
+    <i class="fas fa-code"></i>
+    A Basic Web Page
+  </h3>
+  <p class="section-paragraph">
+    To demonstrate how to create HTML animations with JavaScript, we will use a
+    simple web page with an animation placeholder.
+  </p>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Basic Animation Setup</span
+    >
+    <p>
+      This example shows a basic web page structure for animations. The
+      animation placeholder will be replaced with actual animated content.
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="animations1"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="animations1"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="animations1"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="animations1"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-box"></i>
+    Create an Animation Container
+  </h3>
+  <p class="section-paragraph">
+    All animations should be relative to a container element. This provides a
+    controlled space for your animations and helps with positioning.
+  </p>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Animation Container
+      Setup</span
+    >
+    <p>
+      This example shows how to create a container with an element that can be
+      animated. The container provides boundaries for the animation.
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="animations2"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="animations2"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="animations2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="animations2"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-paint-brush"></i>
+    Style the Elements
+  </h3>
+  <p class="section-paragraph">
+    The container element should be created with
+    <code>position: relative</code>. The animation element should be created
+    with <code>position: absolute</code>. This allows precise control over
+    positioning.
+  </p>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Styled Animation
+      Elements</span
+    >
+    <p>
+      This example demonstrates the proper CSS positioning for animation
+      elements. Notice how the container is relatively positioned and the
+      animated element is absolutely positioned.
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="animations3"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="animations3"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="animations3"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="animations3"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-clock"></i>
+    Animation Code
+  </h3>
+  <p class="section-paragraph">
+    JavaScript animations are done by programming gradual changes in an
+    element's style. The changes are called by a timer. When the timer interval
+    is small, the animation looks continuous.
+  </p>
+  <p class="section-paragraph">The basic code structure is:</p>
+  <code>
+    id = setInterval(frame, 5);<br />
+    <br />
+    function frame() {<br />
+    &nbsp;&nbsp;if (/* test for finished */) {<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;clearInterval(id);<br />
+    &nbsp;&nbsp;} else {<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;/* code to change the element style */<br />
+    &nbsp;&nbsp;}<br />
+    }
+  </code>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Complete JavaScript
+      Animation</span
+    >
+    <p>
+      This example shows a complete JavaScript animation that moves an element
+      diagonally across the container. Click the "Start Animation" button to see
+      it in action!
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="animations4"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="animations4"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="animations4"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="animations4"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-rocket"></i>
+    Advanced Animation Effects
+  </h3>
+  <p class="section-paragraph">
+    You can create more complex animations by combining movement with other CSS
+    properties like size, color, and rotation. This creates rich, interactive
+    visual effects.
+  </p>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Multi-Property
+      Animation</span
+    >
+    <p>
+      This example demonstrates an advanced animation that combines movement,
+      size changes, color transitions, and rotation for a complex visual effect.
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="animations5"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="animations5"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="animations5"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="animations5"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h4 class="section-subtitle">
+        <i class="fas fa-cogs"></i> Animation Techniques
+      </h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Technique</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>setInterval()</code></td>
+            <td>Creates smooth continuous animations</td>
+          </tr>
+          <tr>
+            <td><code>setTimeout()</code></td>
+            <td>Creates delayed or sequential animations</td>
+          </tr>
+          <tr>
+            <td><code>requestAnimationFrame()</code></td>
+            <td>Browser-optimized animation timing</td>
+          </tr>
+          <tr>
+            <td><code>clearInterval()</code></td>
+            <td>Stops running animations</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section-grid__item">
+      <h4 class="section-subtitle">
+        <i class="fas fa-info-circle"></i> Animation Best Practices
+      </h4>
+      <ul class="feature-list">
+        <li>
+          <i class="fas fa-info"></i> Use small interval values (1-20ms) for
+          smooth animations
+        </li>
+        <li>
+          <i class="fas fa-info"></i> Always clear intervals when animations
+          complete
+        </li>
+        <li>
+          <i class="fas fa-info"></i> Use
+          <code>requestAnimationFrame()</code> for better performance
+        </li>
+        <li>
+          <i class="fas fa-info"></i> Test animations on different devices and
+          browsers
+        </li>
+        <li>
+          <i class="fas fa-info"></i> Consider CSS transitions for simple
+          animations
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

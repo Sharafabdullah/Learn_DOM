@@ -1,0 +1,131 @@
+<div class="section-explaination">
+  <h2 class="section-title">
+    <i class="fas fa-search"></i>
+    DOM <span class="highlight">Methods & Properties</span>
+  </h2>
+
+  <p class="section-paragraph">
+    <span class="highlight">HTML DOM methods</span> are actions you can perform
+    on HTML elements, while <span class="highlight">DOM properties</span> are
+    values of HTML elements that you can get or set. Together, they form the
+    programming interface that allows you to dynamically interact with web pages
+    using JavaScript.
+  </p>
+
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-cogs"></i> What are Methods?
+      </h3>
+      <p>
+        Methods are actions you can perform on HTML elements. Think of them as
+        functions that do something - like finding an element, adding content,
+        or removing elements from the page. Methods are called with parentheses
+        and can accept parameters to customize their behavior.
+      </p>
+    </div>
+
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-database"></i> What are Properties?
+      </h3>
+      <p>
+        Properties are values that you can get or set. They represent the
+        current state of an HTML element - like its content, style, or
+        attributes. Properties don't use parentheses and can be read or modified
+        to change how elements appear and behave.
+      </p>
+    </div>
+
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-code"></i> Programming Interface
+      </h3>
+      <p>
+        In the DOM, all HTML elements are defined as objects. Each object has
+        properties (data) and methods (functions) that create the programming
+        interface. This object-oriented approach makes it easy to manipulate web
+        pages programmatically.
+      </p>
+    </div>
+
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-magic"></i> Common Examples
+      </h3>
+      <ul class="feature-list">
+        <li>
+          <i class="fas fa-search"></i> <code>getElementById()</code> - Find
+          element by ID
+        </li>
+        <li>
+          <i class="fas fa-edit"></i> <code>innerHTML</code> - Get/set element
+          content
+        </li>
+        <li>
+          <i class="fas fa-plus"></i> <code>createElement()</code> - Create new
+          elements
+        </li>
+        <li>
+          <i class="fas fa-link"></i> <code>appendChild()</code> - Add elements
+          to page
+        </li>
+        <li>
+          <i class="fas fa-palette"></i> <code>style</code> - Modify CSS
+          properties
+        </li>
+        <li>
+          <i class="fas fa-tag"></i> <code>className</code> - Change CSS classes
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: getElementById &
+      innerHTML</span
+    >
+    <p>
+      Below, we demonstrate the most fundamental DOM method and property
+      combination. <code>getElementById</code> is a <strong>method</strong> that
+      finds an element by its ID, while <code>innerHTML</code> is a
+      <strong>property</strong> that gets/sets the content inside an element.
+      Watch the DOM tree update in real-time!
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="methods1"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="methods1"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="methods1"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="methods1"></div>
+  </div>
+</div>

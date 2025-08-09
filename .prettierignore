@@ -1,0 +1,10 @@
+node_modules
+.git
+*.min.js
+*.min.css
+build/
+dist/
+.next/
+.nuxt/
+.vscode/
+*.log

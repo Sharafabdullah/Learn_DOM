@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Dark theme as default - original dark blue theme */
+  --bg-color: rgba(10, 25, 47, 1);
+  --primary-color: rgba(255, 255, 255, 0.95);
+  --secondary-color: rgba(200, 210, 230, 0.7);
+  --text-color: rgba(255, 255, 255, 0.95);
+  --card-bg: rgba(20, 34, 54, 0.8);
+  --glow-color: rgba(179, 125, 255, 0.18);
+  --border-color: rgba(0, 255, 210, 0.1);
+
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Rajdhani', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+
+  --glow-primary: 0 0 3px var(--primary-color), 0 0 6px var(--primary-color);
+
+  --glow-secondary: 0 0 3px var(--secondary-color),
+    0 0 6px var(--secondary-color);
+
+  --font-weight-display: 700;
+  --font-weight-nav: 500;
+  --font-weight-body: 400;
+
+  --font-size-base: 1.2rem;
+  --font-size-lg: 1.05rem;
+  --font-size-xl: 1.4rem;
+  --font-size-2xl: 2.4rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 4rem;
+}
+
+/* --- Animations --- */
+@keyframes background-pan {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes text-glow {
+  from {
+    text-shadow: var(--glow-primary);
+  }
+  to {
+    text-shadow: 0 0 100px var(--glow-primary);
+  }
+}
+
+@keyframes border-flicker {
+  0%,
+  100% {
+    border-color: var(--primary-color);
+    box-shadow: var(--glow-primary);
+  }
+  50% {
+    border-color: var(--secondary-color);
+    box-shadow: var(--glow-secondary);
+  }
+}
+
+@keyframes slide-in-fwd {
+  from {
+    transform: translateZ(-80px);
+    opacity: 0;
+  }
+  to {
+    transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse-effect {
+  0% {
+    transform: scale(1);
+    box-shadow: var(--glow-secondary);
+  }
+  50% {
+    transform: scale(1.04); /* slightly less than before */
+    box-shadow: 0 0 12px var(--secondary-color), 0 0 16px var(--secondary-color);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: var(--glow-secondary);
+  }
+}

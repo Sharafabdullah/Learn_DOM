@@ -1,0 +1,134 @@
+/* --- Header & Navigation (TOC) --- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid var(--primary-color);
+  box-shadow: var(--glow-primary);
+  z-index: 1000;
+  padding: 2rem 0;
+  transition: width 0.3s ease, padding 0.3s ease;
+  animation: slide-in-fwd 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+header.collapsed {
+  width: 60px;
+  padding: 2rem 0;
+}
+
+.header-toggle {
+  position: absolute;
+  top: 1rem;
+  right: -15px;
+  background: var(--card-bg);
+  border: 1px solid var(--primary-color);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1001;
+  transition: transform 0.3s ease;
+  box-shadow: var(--glow-primary);
+}
+
+.header-toggle:hover {
+  transform: scale(1.1);
+}
+
+header.collapsed .header-toggle {
+  transform: rotate(180deg);
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 4rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+nav::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+nav::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  border-radius: 3px;
+}
+
+nav a {
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: 1rem 2rem;
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-nav);
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  position: relative;
+  font-size: var(--font-size-lg);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  white-space: nowrap;
+}
+
+header.collapsed nav a {
+  padding: 1rem;
+  justify-content: center;
+}
+
+header.collapsed nav a span {
+  display: none;
+}
+
+nav a::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  width: 0px;
+  height: 5px;
+  background: var(--secondary-color);
+  transition: width 0.3s ease;
+}
+header.collapsed nav a::before {
+  display: none;
+}
+
+nav a:hover,
+nav a.active {
+  color: #fff;
+  text-shadow: var(--glow-secondary);
+  transform: translateX(7px);
+  background: linear-gradient(
+    120deg,
+    rgba(179, 125, 255, 0.22) 60%,
+    rgba(26, 26, 46, 0.32) 100%
+  );
+  border-radius: 16px;
+  box-shadow: 0 2px 16px 0 var(--glow-color);
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  z-index: 2;
+  backdrop-filter: blur(8px) saturate(160%);
+  -webkit-backdrop-filter: blur(8px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+nav a:hover::before,
+nav a.active::before {
+  width: 15px;
+}

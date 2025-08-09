@@ -1,0 +1,511 @@
+<div class="section-explaination">
+  <h2 class="section-title">
+    <i class="fas fa-assistive-listening-systems"></i>
+    JavaScript HTML DOM Event Listeners
+  </h2>
+
+  <p class="section-paragraph">
+    The addEventListener() method is the modern way to attach event handlers to
+    HTML elements. It provides more flexibility and control compared to
+    traditional event attributes, allowing you to add multiple event handlers
+    and control event propagation.
+  </p>
+
+  <h3 class="section-subtitle">
+    <i class="fas fa-plus"></i>
+    The addEventListener() Method
+  </h3>
+  <p class="section-paragraph">
+    The addEventListener() method attaches an event handler to the specified
+    element without overwriting existing event handlers. You can add many event
+    handlers to one element, and even add multiple handlers of the same type.
+  </p>
+  <code>element.addEventListener(event, function, useCapture);</code>
+
+  <h4 class="section-subtitle">
+    <i class="fas fa-list"></i>
+    Key Benefits
+  </h4>
+  <ul class="feature-list">
+    <li>
+      <i class="fas fa-check"></i> Doesn't overwrite existing event handlers
+    </li>
+    <li>
+      <i class="fas fa-check"></i> Add multiple event handlers to one element
+    </li>
+    <li><i class="fas fa-check"></i> Add multiple handlers of the same type</li>
+    <li>
+      <i class="fas fa-check"></i> Works with any DOM object, not just HTML
+      elements
+    </li>
+    <li>
+      <i class="fas fa-check"></i> Better control over event bubbling/capturing
+    </li>
+    <li><i class="fas fa-check"></i> Separates JavaScript from HTML markup</li>
+  </ul>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Basic
+      addEventListener</span
+    >
+    <p>
+      This example shows how to add an event listener that fires when a user
+      clicks a button. Notice how the JavaScript is separated from the HTML
+      markup.
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="listeners1"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="listeners1"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="listeners1"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="listeners1"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-code"></i>
+    Syntax and Parameters
+  </h3>
+  <p class="section-paragraph">
+    The addEventListener() method takes three parameters:
+  </p>
+  <ul class="feature-list">
+    <li>
+      <i class="fas fa-info"></i> <strong>event</strong>: The type of event
+      (like "click" or "mousedown")
+    </li>
+    <li>
+      <i class="fas fa-info"></i> <strong>function</strong>: The function to
+      call when the event occurs
+    </li>
+    <li>
+      <i class="fas fa-info"></i> <strong>useCapture</strong>: Boolean for event
+      bubbling/capturing (optional)
+    </li>
+  </ul>
+  <p class="section-paragraph">
+    Note: Don't use the "on" prefix for the event; use "click" instead of
+    "onclick".
+  </p>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Anonymous vs Named
+      Functions</span
+    >
+    <p>
+      This example demonstrates two ways to add event listeners: using anonymous
+      functions and referencing external named functions.
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="listeners2"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="listeners2"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="listeners2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="listeners2"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-layer-group"></i>
+    Multiple Event Handlers
+  </h3>
+  <p class="section-paragraph">
+    The addEventListener() method allows you to add many events to the same
+    element, without overwriting existing events. You can add multiple handlers
+    of the same type or different types to the same element.
+  </p>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Multiple Event
+      Handlers</span
+    >
+    <p>
+      This example shows how to add multiple event handlers to the same element,
+      including multiple handlers of the same type and different types.
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="listeners3"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="listeners3"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="listeners3"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="listeners3"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-window-maximize"></i>
+    Event Listeners on Window Object
+  </h3>
+  <p class="section-paragraph">
+    The addEventListener() method allows you to add event listeners on any HTML
+    DOM object such as HTML elements, the HTML document, the window object, or
+    other objects that support events, like the XMLHttpRequest object.
+  </p>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Window Event
+      Listeners</span
+    >
+    <p>
+      This example demonstrates adding event listeners to the window object. Try
+      resizing your browser window to see the resize event in action!
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="listeners4"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="listeners4"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="listeners4"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="listeners4"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-exchange-alt"></i>
+    Event Bubbling vs Event Capturing
+  </h3>
+  <p class="section-paragraph">
+    There are two ways of event propagation in the HTML DOM: bubbling and
+    capturing. Event propagation defines the order in which events are handled
+    when you have nested elements.
+  </p>
+  <ul class="feature-list">
+    <li>
+      <i class="fas fa-arrow-up"></i> <strong>Bubbling</strong>: Inner element's
+      event is handled first, then outer (default)
+    </li>
+    <li>
+      <i class="fas fa-arrow-down"></i> <strong>Capturing</strong>: Outer
+      element's event is handled first, then inner
+    </li>
+  </ul>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Event Propagation</span
+    >
+    <p>
+      This example demonstrates event bubbling and capturing. Click on the inner
+      element to see the difference between bubbling (false) and capturing
+      (true).
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="listeners5"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="listeners5"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="listeners5"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="listeners5"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-minus"></i>
+    The removeEventListener() Method
+  </h3>
+  <p class="section-paragraph">
+    The removeEventListener() method removes event handlers that have been
+    attached with the addEventListener() method. This is important for
+    preventing memory leaks and managing event handlers dynamically.
+  </p>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Adding and Removing Event
+      Listeners</span
+    >
+    <p>
+      This example demonstrates how to add and remove event listeners
+      dynamically. You can enable/disable mouse tracking and see how event
+      listeners are managed.
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="listeners6"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="listeners6"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="listeners6"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="listeners6"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-cog"></i>
+    Passing Parameters with Event Listeners
+  </h3>
+  <p class="section-paragraph">
+    When you need to pass parameters to event handler functions, use anonymous
+    functions that call the specified function with the parameters. This is a
+    common pattern for making event handlers more flexible and reusable.
+  </p>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Passing Parameters</span
+    >
+    <p>
+      This example shows how to pass parameters to event handler functions using
+      anonymous functions. Different buttons pass different parameters to the
+      same function.
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="listeners7"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="listeners7"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="listeners7"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="listeners7"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h4 class="section-subtitle">
+        <i class="fas fa-list"></i> Event Listener Methods
+      </h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>addEventListener()</code></td>
+            <td>Adds an event listener to an element</td>
+          </tr>
+          <tr>
+            <td><code>removeEventListener()</code></td>
+            <td>Removes an event listener from an element</td>
+          </tr>
+          <tr>
+            <td><code>dispatchEvent()</code></td>
+            <td>Dispatches an event to an element</td>
+          </tr>
+          <tr>
+            <td><code>preventDefault()</code></td>
+            <td>Prevents the default action of an event</td>
+          </tr>
+          <tr>
+            <td><code>stopPropagation()</code></td>
+            <td>Stops event propagation</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section-grid__item">
+      <h4 class="section-subtitle">
+        <i class="fas fa-info-circle"></i> Event Listener Best Practices
+      </h4>
+      <ul class="feature-list">
+        <li>
+          <i class="fas fa-info"></i> Use addEventListener() instead of inline
+          event handlers
+        </li>
+        <li>
+          <i class="fas fa-info"></i> Always remove event listeners when no
+          longer needed
+        </li>
+        <li>
+          <i class="fas fa-info"></i> Use named functions for reusable event
+          handlers
+        </li>
+        <li>
+          <i class="fas fa-info"></i> Consider event delegation for dynamic
+          content
+        </li>
+        <li>
+          <i class="fas fa-info"></i> Use capturing sparingly, bubbling is
+          usually sufficient
+        </li>
+        <li>
+          <i class="fas fa-info"></i> Test event behavior across different
+          browsers
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

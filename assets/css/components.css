@@ -1,0 +1,72 @@
+/* Components: buttons, dark mode toggle, and other interactive elements */
+
+button {
+  background: transparent;
+  color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--glow-secondary);
+  font-size: var(--font-size-lg);
+}
+
+button:hover {
+  background-color: var(--glow-color);
+  color: #fff;
+  transform: scale(1.04);
+  box-shadow: 0 0 12px var(--glow-color);
+}
+
+.dark-mode-toggle {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  width: 50px;
+  height: 50px;
+  background: var(--card-bg);
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--glow-primary);
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px var(--glow-color);
+}
+
+.dark-mode-toggle i {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  text-shadow: var(--glow-secondary);
+}
+
+/* Light theme styles */
+body[data-theme='light'] {
+  --bg-color: rgba(240, 248, 255, 1);
+  --primary-color: rgba(20, 30, 50, 0.95);
+  --secondary-color: rgba(60, 80, 120, 0.8);
+  --text-color: rgba(20, 30, 50, 0.95);
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --glow-color: rgba(100, 150, 255, 0.2);
+  --border-color: rgba(100, 150, 255, 0.3);
+}
+
+body[data-theme='light'] .dark-mode-toggle {
+  background: var(--card-bg);
+  border-color: var(--primary-color);
+}
+
+body[data-theme='light'] .dark-mode-toggle i {
+  color: var(--primary-color);
+}

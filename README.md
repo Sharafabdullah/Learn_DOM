@@ -1,115 +1,60 @@
-# Interactive DOM Tutorial
+# Learn DOM (Interactive DOM Tutorial)
 
-An interactive web application for learning DOM manipulation with real-time code execution and visual DOM tree representation.
+Interactive tutorial for learning HTML DOM manipulation with live CodeMirror editors, sandboxed iframe previews, and a D3 force‑directed visualization of the resulting DOM tree.
 
-## Features
-
-- **Multiple Code Editors**: Each section has its own isolated code editor with custom default code
-- **Real-time Execution**: Code runs instantly with preview and DOM visualization
-- **Force-Directed DOM Tree**: Beautiful D3.js visualization showing DOM structure
-- **Interactive Elements**: Drag nodes, smooth scrolling, dark mode
-- **Responsive Design**: Works on different screen sizes
-- **Modular Structure**: Easy to copy and customize sections with different examples
-
-## File Structure
+## Current Modular Structure
 
 ```
-tests/
-├── dom_website.html    # Main HTML file with all sections
-├── app.js             # Main application JavaScript
-├── styles.css         # All styling and CSS
-└── README.md          # This file
+css/
+  base.css          # Variables, resets, typography
+  layout.css        # Layout, nav, grids
+  theme.css         # Components, animations, styling
+js/
+  app.js            # Bootstrap + UI (nav toggle, smooth scroll, dark mode, section reveal)
+  editors.js        # Editor lifecycle, preview iframe, DOM tree toggle, default code map, CONFIG
+  dom-visualization.js # D3 graph creation & rendering
+src/
+  index.html        # Landing page
+  tutorial.html     # Main interactive tutorial (loads modules)
+dom_website.html    # (LEGACY) Original monolithic page – safe to delete after validation
+styles.css          # (LEGACY) Original monolithic stylesheet – superseded by css/*.css
+README.md
 ```
 
-## Modular Section Structure
+## Running
 
-Each interactive demo section follows this modular pattern:
+Just open `src/tutorial.html` (or `index.html` then click through) in a modern browser with internet access (CDN scripts for D3 & CodeMirror).
 
-```html
-<section id="section-name">
-  <h2 class="section-title"><i class="fas fa-icon"></i> Section Title</h2>
-  <p>Section description</p>
+## Key Features
 
-  <div class="code-playground interactive-demo">
-    <div class="editor-sandbox-container">
-      <div class="editor-container">
-        <div class="jsEditor" data-editor-id="unique-id">
-          <script type="text/template">
-            // Your default JavaScript code here
-            const html = `<!DOCTYPE html>...`;
-            previewArea.innerHTML = html;
-            // More JavaScript...
-          </script>
-        </div>
-        <button class="run-button"><i class="fas fa-play"></i> Run Code</button>
-      </div>
-      <div class="visualization-container">
-        <div class="sandbox">
-          <div class="sandbox-content">
-            <h3>Preview</h3>
-            <div class="previewArea" data-editor-id="unique-id"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="domTree" data-editor-id="unique-id"></div>
-  </div>
-</section>
-```
+- Per‑editor Run button + DOM tree visibility toggle
+- Sandboxed iframe execution (isolated environment)
+- Live DOM graph (document / element / attribute / text nodes)
+- Dark / light mode toggle
+- Animated section reveal & active nav highlighting
 
-## Customizing Sections
+## Default Code Management
 
-To add or modify a section:
+All default example snippets are stored in a `Map` inside `editors.js` (merged from the previous separate default-code module to reduce JS file count).
 
-1. **Copy the modular structure** above
-2. **Change the unique-id** to match your section (must be consistent across all `data-editor-id` attributes)
-3. **Update the default code** inside the `<script type="text/template">` tag
-4. **Modify title, icon, and description** as needed
+## Refactor Notes
 
-## Usage
+- Legacy `dom_website.html` retained temporarily for comparison.
+- Once parity is confirmed, delete: `dom_website.html` and `styles.css`.
 
-1. Open `dom_website.html` in a web browser
-2. Navigate through different sections using the sidebar
-3. Edit JavaScript code in any editor
-4. Click "Run Code" to execute and see results
-5. Observe the DOM tree visualization update in real-time
+## Next Possible Enhancements
 
-## Available Sections
+1. Port remaining legacy sections (Animations, Events, etc.) if still desired.
+2. Add accessibility improvements (ARIA landmarks for nav/sections).
+3. Add persistence (localStorage) for edited code per editor id.
+4. Optional: Build script to inline assets for offline use.
 
-- **Introduction**: Basic DOM manipulation
-- **Methods**: Element selection methods
-- **Document**: Working with the document object
-- **Elements**: Creating and manipulating elements
-- **HTML**: Dynamic HTML generation
-- **CSS**: Styling with JavaScript
-- **Animations**: CSS and JavaScript animations
-- **Events**: Event handling
-- **Listeners**: Advanced event management
-- **Navigation**: DOM traversal
-- **Nodes**: Working with different node types
-- **Collections**: Element collections (HTMLCollection)
-- **NodeLists**: Understanding NodeLists
+## Dependencies (via CDN)
 
-## Dependencies
-
-- **D3.js v7**: For force-directed graph visualization
-- **CodeMirror 5.65.2**: For code editing functionality
-- **Font Awesome 6**: For icons throughout the interface
-
-## Browser Compatibility
-
-- Modern browsers with ES6+ support
-- Chrome 60+, Firefox 60+, Safari 12+, Edge 79+
-
-## Development
-
-The application uses a clean, modular architecture:
-
-- **Static HTML sections**: All sections are defined in HTML, no dynamic generation
-- **Template-based default code**: Each editor reads its default code from embedded `<script type="text/template">` tags
-- **Event-driven updates**: Real-time DOM tree visualization updates as code executes
-- **Copy-paste friendly**: Easy to duplicate and customize sections
+- D3.js v7
+- CodeMirror 5.x (htmlmixed mode + dependencies)
+- Font Awesome (icons)
 
 ## License
 
-Educational use only.
+Educational / instructional use.

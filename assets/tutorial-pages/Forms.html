@@ -1,0 +1,342 @@
+<div class="section-explaination">
+  <h2 class="section-title">
+    <i class="fas fa-clipboard-check"></i>
+    JavaScript Form Validation
+  </h2>
+
+  <p class="section-paragraph">
+    HTML form validation can be done by JavaScript. Forms are an essential part
+    of web applications, and proper validation ensures that users provide
+    correct and complete information before submitting data.
+  </p>
+
+  <h3 class="section-subtitle">
+    <i class="fas fa-code"></i>
+    Basic Form Validation
+  </h3>
+  <p class="section-paragraph">
+    If a form field (fname) is empty, this function alerts a message and returns
+    false to prevent the form from being submitted:
+  </p>
+  <code>
+    function validateForm() {<br />
+    &nbsp;&nbsp;let x = document.forms["myForm"]["fname"].value;<br />
+    &nbsp;&nbsp;if (x == "") {<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;alert("Name must be filled out");<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;return false;<br />
+    &nbsp;&nbsp;}<br />
+    }
+  </code>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Basic Form Validation</span
+    >
+    <p>
+      The HTML document contains a form with a name field. We use JavaScript to
+      validate that the field is not empty before submission.
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="forms1"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="forms1"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="forms1"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="forms1"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-calculator"></i>
+    JavaScript Can Validate Numeric Input
+  </h3>
+  <p class="section-paragraph">
+    JavaScript is often used to validate numeric input. For example, checking if
+    a number is within a specific range.
+  </p>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Numeric Input
+      Validation</span
+    >
+    <p>
+      This example demonstrates validating that a user enters a number between 1
+      and 10. Try entering different values to see the validation in action.
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="forms2"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="forms2"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="forms2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="forms2"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-magic"></i>
+    Automatic HTML Form Validation
+  </h3>
+  <p class="section-paragraph">
+    HTML form validation can be performed automatically by the browser using
+    HTML5 validation attributes like <code>required</code>, <code>min</code>,
+    <code>max</code>, and <code>pattern</code>.
+  </p>
+  <p class="section-paragraph">
+    <strong>Note:</strong> Automatic HTML form validation does not work in
+    Internet Explorer 9 or earlier.
+  </p>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: HTML5 Automatic
+      Validation</span
+    >
+    <p>
+      This form uses the <code>required</code> attribute to automatically
+      prevent submission if the field is empty. No JavaScript needed!
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="forms3"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="forms3"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="forms3"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="forms3"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-shield-alt"></i>
+    Data Validation
+  </h3>
+  <p class="section-paragraph">
+    Data validation is the process of ensuring that user input is clean,
+    correct, and useful. Typical validation tasks include:
+  </p>
+  <ul class="feature-list">
+    <li>
+      <i class="fas fa-check"></i> Has the user filled in all required fields?
+    </li>
+    <li><i class="fas fa-check"></i> Has the user entered a valid date?</li>
+    <li>
+      <i class="fas fa-check"></i> Has the user entered text in a numeric field?
+    </li>
+  </ul>
+  <p class="section-paragraph">
+    Most often, the purpose of data validation is to ensure correct user input.
+    Validation can be defined by many different methods and deployed in many
+    different ways.
+  </p>
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h4 class="section-subtitle">
+        <i class="fas fa-server"></i> Server Side Validation
+      </h4>
+      <p>
+        Performed by a web server, after input has been sent to the server. This
+        is the most secure form of validation.
+      </p>
+    </div>
+    <div class="section-grid__item">
+      <h4 class="section-subtitle">
+        <i class="fas fa-desktop"></i> Client Side Validation
+      </h4>
+      <p>
+        Performed by a web browser, before input is sent to a web server. This
+        provides immediate feedback to users.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-cogs"></i>
+    HTML Constraint Validation
+  </h3>
+  <p class="section-paragraph">
+    HTML5 introduced a new HTML validation concept called constraint validation.
+    HTML constraint validation is based on:
+  </p>
+  <ul class="feature-list">
+    <li>
+      <i class="fas fa-tag"></i> Constraint validation HTML Input Attributes
+    </li>
+    <li>
+      <i class="fas fa-paint-brush"></i> Constraint validation CSS Pseudo
+      Selectors
+    </li>
+    <li>
+      <i class="fas fa-code"></i> Constraint validation DOM Properties and
+      Methods
+    </li>
+  </ul>
+
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h4 class="section-subtitle">
+        <i class="fas fa-tags"></i> HTML Input Attributes
+      </h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Attribute</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>disabled</code></td>
+            <td>Specifies that the input element should be disabled</td>
+          </tr>
+          <tr>
+            <td><code>max</code></td>
+            <td>Specifies the maximum value of an input element</td>
+          </tr>
+          <tr>
+            <td><code>min</code></td>
+            <td>Specifies the minimum value of an input element</td>
+          </tr>
+          <tr>
+            <td><code>pattern</code></td>
+            <td>Specifies the value pattern of an input element</td>
+          </tr>
+          <tr>
+            <td><code>required</code></td>
+            <td>Specifies that the input field requires an element</td>
+          </tr>
+          <tr>
+            <td><code>type</code></td>
+            <td>Specifies the type of an input element</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section-grid__item">
+      <h4 class="section-subtitle">
+        <i class="fas fa-palette"></i> CSS Pseudo Selectors
+      </h4>
+      <table>
+        <thead>
+          <tr>
+            <th>Selector</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>:disabled</code></td>
+            <td>Selects input elements with the "disabled" attribute</td>
+          </tr>
+          <tr>
+            <td><code>:invalid</code></td>
+            <td>Selects input elements with invalid values</td>
+          </tr>
+          <tr>
+            <td><code>:optional</code></td>
+            <td>Selects input elements with no "required" attribute</td>
+          </tr>
+          <tr>
+            <td><code>:required</code></td>
+            <td>Selects input elements with the "required" attribute</td>
+          </tr>
+          <tr>
+            <td><code>:valid</code></td>
+            <td>Selects input elements with valid values</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Advanced Form Validation
+      with Styling</span
+    >
+    <p>
+      This example demonstrates using CSS pseudo-selectors to style form fields
+      based on their validation state, along with JavaScript for custom
+      validation messages.
+    </p>
+  </div>
+</div>

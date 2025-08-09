@@ -1,0 +1,272 @@
+<div class="section-explaination">
+  <h2 class="section-title">
+    <i class="fas fa-edit"></i>
+    Changing HTML Content
+  </h2>
+
+  <p class="section-paragraph">
+    The HTML DOM allows JavaScript to change the content of HTML elements. The
+    easiest way to modify the content of an HTML element is by using the
+    <code>innerHTML</code> property.
+  </p>
+
+  <h3 class="section-subtitle">
+    <i class="fas fa-code"></i>
+    Changing HTML Content
+  </h3>
+  <p class="section-paragraph">
+    To change the content of an HTML element, use this syntax:
+  </p>
+  <code>document.getElementById(id).innerHTML = new HTML</code>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Changing Paragraph
+      Content</span
+    >
+    <p>
+      The HTML document contains a <code>&lt;p&gt;</code> element with
+      <code>id="p1"</code>. We use the HTML DOM to get the element and change
+      its content using <code>innerHTML</code>.
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="changing1"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="changing1"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="changing1"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="changing1"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Changing Heading
+      Content</span
+    >
+    <p>
+      The HTML document contains an <code>&lt;h1&gt;</code> element with
+      <code>id="id01"</code>. We use the HTML DOM to get the element and change
+      its content using <code>innerHTML</code>.
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="changing2"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="changing2"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="changing2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="changing2"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-cog"></i>
+    Changing the Value of an Attribute
+  </h3>
+  <p class="section-paragraph">
+    To change the value of an HTML attribute, use this syntax:
+  </p>
+  <code>document.getElementById(id).attribute = new value</code>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Changing Image Source
+      Attribute</span
+    >
+    <p>
+      The HTML document contains an <code>&lt;img&gt;</code> element with
+      <code>id="myImage"</code>. We use the HTML DOM to get the element and
+      change its <code>src</code> attribute.
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="changing3"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="changing3"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="changing3"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="changing3"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-clock"></i>
+    Dynamic HTML Content
+  </h3>
+  <p class="section-paragraph">
+    JavaScript can create dynamic HTML content. For example, displaying the
+    current date and time:
+  </p>
+  <p class="section-paragraph">
+    <strong>Current Date:</strong>
+    <span id="current-date">Sat Aug 09 2025 22:28:58 GMT+0300 (GMT+03:00)</span>
+  </p>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Dynamic Date Display</span
+    >
+    <p>
+      JavaScript can create dynamic HTML content. For example, displaying the
+      current date and time in the page.
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="changing4"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="changing4"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="changing4"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="changing4"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <h3 class="section-subtitle">
+    <i class="fas fa-pen"></i>
+    document.write()
+  </h3>
+  <p class="section-paragraph">
+    In JavaScript, <code>document.write()</code> can be used to write directly
+    to the HTML output stream. <strong>Note:</strong> This method should be used
+    carefully as it can overwrite existing content.
+  </p>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-terminal"></i> Live Example: Using
+      document.write()</span
+    >
+    <p>
+      In JavaScript, <code>document.write()</code> can be used to write directly
+      to the HTML output stream. <strong>Note:</strong> This method should be
+      used carefully as it can overwrite existing content.
+    </p>
+  </div>
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="changing5"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="changing5"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="changing5"></div>
+        </div>
+      </div>
+    </div>
+    <div class="domTree" data-editor-id="changing5"></div>
+  </div>
+</div>
