@@ -4,16 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Interactive DOM Tutorial</title>
+
+    <!-- Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;600&display=swap"
       rel="stylesheet"
     />
-    <link href="styles.css?v=1.5" rel="stylesheet" />
-    <!-- Font Awesome for icons -->
+
+    <!-- External Libraries -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+
+    <!-- CodeMirror -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css"
       rel="stylesheet"
@@ -24,126 +29,775 @@
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/xml/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/css/css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/htmlmixed/htmlmixed.min.js"></script>
+
+    <!-- Application Styles -->
+    <link href="styles.css" rel="stylesheet" />
   </head>
+
   <body>
     <header>
+      <div class="header-toggle">
+        <i class="fas fa-chevron-left"></i>
+      </div>
       <nav>
-        <a href="#introduction">Introduction</a>
-        <a href="#methods">Methods</a>
-        <a href="#document">Document</a>
-        <a href="#elements">Elements</a>
-        <a href="#html">HTML</a>
-        <a href="#css">CSS</a>
-        <a href="#animations">Animations</a>
-        <a href="#events">Events</a>
-        <a href="#listeners">Listeners</a>
-        <a href="#navigation">Navigation</a>
-        <a href="#nodes">Nodes</a>
-        <a href="#collections">Collections</a>
-        <a href="#nodelists">NodeLists</a>
+        <a href="#introduction"
+          ><i class="fas fa-tree"></i><span>Introduction</span></a
+        >
+        <a href="#methods"><i class="fas fa-search"></i><span>Methods</span></a>
+        <a href="#document"
+          ><i class="fas fa-file-alt"></i><span>Document</span></a
+        >
+        <a href="#elements"
+          ><i class="fas fa-puzzle-piece"></i><span>Elements</span></a
+        >
+        <a href="#html"><i class="fas fa-code"></i><span>HTML</span></a>
+        <a href="#css"><i class="fas fa-paint-brush"></i><span>CSS</span></a>
+        <a href="#animations"
+          ><i class="fas fa-magic"></i><span>Animations</span></a
+        >
+        <a href="#events"
+          ><i class="fas fa-mouse-pointer"></i><span>Events</span></a
+        >
+        <a href="#listeners"
+          ><i class="fas fa-assistive-listening-systems"></i
+          ><span>Listeners</span></a
+        >
+        <a href="#navigation"
+          ><i class="fas fa-sitemap"></i><span>Navigation</span></a
+        >
+        <a href="#nodes"
+          ><i class="fas fa-project-diagram"></i><span>Nodes</span></a
+        >
+        <a href="#collections"
+          ><i class="fas fa-layer-group"></i><span>Collections</span></a
+        >
+        <a href="#nodelists"
+          ><i class="fas fa-list-ol"></i><span>NodeLists</span></a
+        >
       </nav>
     </header>
 
     <main>
       <section id="introduction">
-        <div data-background-placeholder></div>
-        <h2 class="section-title"><i class="fas fa-tree"></i> Introduction</h2>
-        <p>
-          The HTML DOM is a programming interface for web documents. Experiment
-          with DOM manipulation below.
-        </p>
-        <div class="code-playground interactive-demo">
-          <div class="editor-container">
-            <div id="jsEditor"></div>
-            <button onclick="runCode()" class="run-button">
-              <i class="fas fa-play"></i> Run Code
-            </button>
+        <div class="section-explaination">
+          <h2 class="section-title">
+            <i class="fas fa-tree"></i>
+            Introduction to the <span class="highlight">HTML DOM</span>
+          </h2>
+
+          <p class="section-paragraph">
+            The
+            <span class="highlight">HTML DOM (Document Object Model)</span> is
+            the browser's programming interface for HTML. When a web page is
+            loaded, the browser creates a DOM of the page, which is an
+            object-oriented representation of the web page that can be modified
+            with a scripting language like JavaScript.
+          </p>
+
+          <div class="section-grid">
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-sitemap"></i> What is the DOM?
+              </h3>
+              <p>
+                The DOM represents the document as a logical tree of nodes. Each
+                node is an object representing a part of the document, like an
+                element, an attribute, or a piece of text. This structured
+                representation allows you to interact with the page dynamically
+                and create powerful web applications.
+              </p>
+            </div>
+
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-bolt"></i> Why is it Powerful?
+              </h3>
+              <ul class="feature-list">
+                <li>
+                  <i class="fas fa-check-circle"></i> Change all HTML elements
+                  in the page
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Change all HTML attributes
+                  in the page
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Change all CSS styles in
+                  the page
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Remove or add HTML
+                  elements and attributes
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> React to all existing HTML
+                  events
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Create new HTML events
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="visualization-container">
-            <div id="domTree" class="dom-tree"></div>
-            <div id="sandbox" class="sandbox">
-              <div class="sandbox-content">
-                <h3>Preview</h3>
-                <div id="previewArea"></div>
+        </div>
+
+        <div class="section-example">
+          <div class="section-explaination">
+            <span class="section-subtitle"
+              ><i class="fas fa-terminal"></i> Live Example</span
+            >
+            <p>
+              Below, we create a simple HTML structure in the preview area, then
+              use <code>getElementById</code> to find the
+              <code>&lt;p&gt;</code> element with the ID <code>demo</code> and
+              change its content using <code>innerHTML</code>. Watch how the DOM
+              tree visualization updates to reflect the changes!
+            </p>
+          </div>
+
+          <div class="code-playground">
+            <div class="editor-sandbox-container">
+              <div class="editor-container">
+                <div class="jsEditor" data-editor-id="introduction1"></div>
+                <button class="run-button">
+                  <i class="fas fa-play"></i> Run Code
+                </button>
+              </div>
+
+              <div class="visualization-container">
+                <div class="sandbox-content">
+                  <h3>Preview</h3>
+                  <div class="previewArea" data-editor-id="introduction1"></div>
+                </div>
               </div>
             </div>
+
+            <div class="domTree" data-editor-id="introduction1"></div>
           </div>
         </div>
       </section>
 
       <section id="methods">
-        <h2 class="section-title"><i class="fas fa-search"></i> Methods</h2>
-        <p>
-          JavaScript provides several methods to select elements from the DOM.
-        </p>
-        <div class="code-playground">
-          <p>Try selecting elements in the sample HTML below:</p>
-          <div class="live-preview" id="methods-preview">
-            <p id="p1">This is a paragraph with an ID.</p>
-            <p class="content">This is a paragraph with a class.</p>
-            <span>This is a span.</span>
+        <div class="section-explaination">
+          <h2 class="section-title">
+            <i class="fas fa-search"></i>
+            DOM <span class="highlight">Methods & Properties</span>
+          </h2>
+
+          <p class="section-paragraph">
+            <span class="highlight">HTML DOM methods</span> are actions you can
+            perform on HTML elements, while
+            <span class="highlight">DOM properties</span> are values of HTML
+            elements that you can get or set. Together, they form the
+            programming interface that allows you to dynamically interact with
+            web pages using JavaScript.
+          </p>
+
+          <div class="section-grid">
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-cogs"></i> What are Methods?
+              </h3>
+              <p>
+                Methods are actions you can perform on HTML elements. Think of
+                them as functions that do something - like finding an element,
+                adding content, or removing elements from the page. Methods are
+                called with parentheses and can accept parameters to customize
+                their behavior.
+              </p>
+            </div>
+
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-database"></i> What are Properties?
+              </h3>
+              <p>
+                Properties are values that you can get or set. They represent
+                the current state of an HTML element - like its content, style,
+                or attributes. Properties don't use parentheses and can be read
+                or modified to change how elements appear and behave.
+              </p>
+            </div>
+
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-code"></i> Programming Interface
+              </h3>
+              <p>
+                In the DOM, all HTML elements are defined as objects. Each
+                object has properties (data) and methods (functions) that create
+                the programming interface. This object-oriented approach makes
+                it easy to manipulate web pages programmatically.
+              </p>
+            </div>
+
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-magic"></i> Common Examples
+              </h3>
+              <ul class="feature-list">
+                <li>
+                  <i class="fas fa-search"></i> <code>getElementById()</code> -
+                  Find element by ID
+                </li>
+                <li>
+                  <i class="fas fa-edit"></i> <code>innerHTML</code> - Get/set
+                  element content
+                </li>
+                <li>
+                  <i class="fas fa-plus"></i> <code>createElement()</code> -
+                  Create new elements
+                </li>
+                <li>
+                  <i class="fas fa-link"></i> <code>appendChild()</code> - Add
+                  elements to page
+                </li>
+                <li>
+                  <i class="fas fa-palette"></i> <code>style</code> - Modify CSS
+                  properties
+                </li>
+                <li>
+                  <i class="fas fa-tag"></i> <code>className</code> - Change CSS
+                  classes
+                </li>
+              </ul>
+            </div>
           </div>
-          <pre><code>document.getElementById('p1');</code></pre>
-          <pre><code>document.getElementsByClassName('content');</code></pre>
-          <pre><code>document.getElementsByTagName('span');</code></pre>
-          <pre><code>document.querySelector('.content');</code></pre>
+        </div>
+
+        <div class="section-example">
+          <div class="section-explaination">
+            <span class="section-subtitle"
+              ><i class="fas fa-terminal"></i> Live Example: getElementById &
+              innerHTML</span
+            >
+            <p>
+              Below, we demonstrate the most fundamental DOM method and property
+              combination. <code>getElementById</code> is a
+              <strong>method</strong> that finds an element by its ID, while
+              <code>innerHTML</code> is a <strong>property</strong> that
+              gets/sets the content inside an element. Watch the DOM tree update
+              in real-time!
+            </p>
+          </div>
+
+          <div class="code-playground">
+            <div class="editor-sandbox-container">
+              <div class="editor-container">
+                <div class="jsEditor" data-editor-id="methods1"></div>
+                <button class="run-button">
+                  <i class="fas fa-play"></i> Run Code
+                </button>
+              </div>
+
+              <div class="visualization-container">
+                <div class="sandbox-content">
+                  <h3>Preview</h3>
+                  <div class="previewArea" data-editor-id="methods1"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="domTree" data-editor-id="methods1"></div>
+          </div>
         </div>
       </section>
 
       <section id="document">
-        <h2 class="section-title">
-          <i class="fas fa-file-alt"></i> Document Object
-        </h2>
-        <p>
-          The `document` object represents your web page. It's the entry point
-          to the DOM.
-        </p>
-        <div class="code-playground">
-          <button onclick="logDocumentProperties()">
-            Log Document Properties
-          </button>
-          <div class="live-preview" id="document-preview"></div>
-          <script>
-            function logDocumentProperties() {
-              const preview = document.getElementById('document-preview');
-              preview.innerHTML = `Title: ${document.title}<br>Body ID: ${document.body.id}`;
-            }
-          </script>
+        <div class="section-explaination">
+          <h2 class="section-title">
+            <i class="fas fa-file-alt"></i>
+            The <span class="highlight">HTML DOM Document Object</span>
+          </h2>
+          <p class="section-paragraph">
+            The <span class="highlight">document</span> object is the root of
+            the HTML DOM and the owner of all other objects in your web page. If
+            you want to access or manipulate any element in an HTML page, you
+            always start with the <code>document</code> object. It represents
+            your web page and provides methods and properties to find, change,
+            add, or remove elements, as well as to handle events and interact
+            with the browser.
+          </p>
+          <div class="section-grid">
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-search"></i> Finding HTML Elements
+              </h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>document.getElementById(id)</code></td>
+                    <td>Find an element by element id</td>
+                  </tr>
+                  <tr>
+                    <td><code>document.getElementsByTagName(name)</code></td>
+                    <td>Find elements by tag name</td>
+                  </tr>
+                  <tr>
+                    <td><code>document.getElementsByClassName(name)</code></td>
+                    <td>Find elements by class name</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-edit"></i> Changing HTML Elements
+              </h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Property/Method</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>element.innerHTML = new html</code></td>
+                    <td>Change the inner HTML of an element</td>
+                  </tr>
+                  <tr>
+                    <td><code>element.attribute = value</code></td>
+                    <td>Change the attribute value of an HTML element</td>
+                  </tr>
+                  <tr>
+                    <td><code>element.style.property = value</code></td>
+                    <td>Change the style of an HTML element</td>
+                  </tr>
+                  <tr>
+                    <td><code>element.setAttribute(attr, value)</code></td>
+                    <td>Change the attribute value of an HTML element</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-plus"></i> Adding and Deleting Elements
+              </h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>document.createElement(element)</code></td>
+                    <td>Create an HTML element</td>
+                  </tr>
+                  <tr>
+                    <td><code>document.removeChild(element)</code></td>
+                    <td>Remove an HTML element</td>
+                  </tr>
+                  <tr>
+                    <td><code>document.appendChild(element)</code></td>
+                    <td>Add an HTML element</td>
+                  </tr>
+                  <tr>
+                    <td><code>document.replaceChild(new, old)</code></td>
+                    <td>Replace an HTML element</td>
+                  </tr>
+                  <tr>
+                    <td><code>document.write(text)</code></td>
+                    <td>Write into the HTML output stream</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-bolt"></i> Adding Event Handlers
+              </h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Method</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <code
+                        >document.getElementById(id).onclick =
+                        function(){`{`}code{`}`}</code
+                      >
+                    </td>
+                    <td>Add event handler code to an onclick event</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="section-grid">
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-database"></i> Common Document Properties
+              </h3>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Property</th>
+                    <th>Description</th>
+                    <th>DOM Level</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>document.anchors</code></td>
+                    <td>Deprecated. Do not use it.</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td><code>document.applets</code></td>
+                    <td>Deprecated. Do not use it.</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td><code>document.baseURI</code></td>
+                    <td>Returns the absolute base URI of the document</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td><code>document.body</code></td>
+                    <td>Returns the <code>&lt;body&gt;</code> element</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td><code>document.cookie</code></td>
+                    <td>Returns the document's cookie</td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td><code>document.doctype</code></td>
+                    <td>Returns the document's doctype</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td><code>document.documentElement</code></td>
+                    <td>Returns the <code>&lt;html&gt;</code> element</td>
+                    <td>3</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-info-circle"></i> More Useful Info
+              </h3>
+              <ul class="feature-list">
+                <li>
+                  <i class="fas fa-info"></i> The <code>document</code> object
+                  is available globally in all browsers.
+                </li>
+                <li>
+                  <i class="fas fa-info"></i> You can use
+                  <code>console.dir(document)</code> to explore all its
+                  properties in the browser console.
+                </li>
+                <li>
+                  <i class="fas fa-info"></i> Modern JavaScript frameworks often
+                  interact with the DOM via the <code>document</code> object.
+                </li>
+                <li>
+                  <i class="fas fa-info"></i> The <code>document</code> object
+                  is part of the
+                  <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/API/Document"
+                    target="_blank"
+                    >Document interface</a
+                  >
+                  on MDN.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="section-example">
+          <div class="section-explaination">
+            <span class="section-subtitle"
+              ><i class="fas fa-terminal"></i> Live Example: Using the
+              <code>document</code> Object</span
+            >
+            <p>
+              Try the code below to see how you can use the
+              <code>document</code> object to find, change, and add elements
+              dynamically. Edit the code and click <strong>Run Code</strong> to
+              see the result and the updated DOM tree!
+            </p>
+          </div>
+          <div class="code-playground">
+            <div class="editor-sandbox-container">
+              <div class="editor-container">
+                <div class="jsEditor" data-editor-id="document1"></div>
+                <button class="run-button">
+                  <i class="fas fa-play"></i> Run Code
+                </button>
+              </div>
+              <div class="visualization-container">
+                <div class="sandbox-content">
+                  <h3>Preview</h3>
+                  <div class="previewArea" data-editor-id="document1"></div>
+                </div>
+              </div>
+            </div>
+            <div class="domTree" data-editor-id="document1"></div>
+          </div>
         </div>
       </section>
 
       <section id="elements">
-        <h2 class="section-title">
-          <i class="fas fa-puzzle-piece"></i> Elements
-        </h2>
-        <p>You can find, change, add, and delete HTML elements.</p>
-        <div class="code-playground">
-          <div class="live-preview" id="elements-preview">
-            <p>An existing paragraph.</p>
+        <div class="section-explaination">
+          <h2 class="section-title">
+            <i class="fas fa-puzzle-piece"></i>
+            Finding and Accessing <span class="highlight">DOM Elements</span>
+          </h2>
+          <p class="section-paragraph">
+            To manipulate HTML with JavaScript, you first need to
+            <strong>find</strong> the elements you want to work with. The DOM
+            provides several powerful methods to access elements by
+            <code>id</code>, <code>tag name</code>, <code>class name</code>,
+            <code>CSS selectors</code>, or
+            <code>object collections</code>.<br /><br />
+            <strong>Common ways to find elements:</strong>
+          </p>
+          <div class="section-grid">
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-id-badge"></i> By ID
+              </h3>
+              <p>
+                Find a single element by its unique <code>id</code> attribute.
+              </p>
+              <code>const el = document.getElementById("intro");</code>
+            </div>
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-tags"></i> By Tag Name
+              </h3>
+              <p>Find all elements with a given tag name.</p>
+              <code>const ps = document.getElementsByTagName("p");</code>
+              <p>Find all <code>&lt;p&gt;</code> inside an element:</p>
+              <code
+                >const main = document.getElementById("main");<br />const ps =
+                main.getElementsByTagName("p");</code
+              >
+            </div>
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-list"></i> By Class Name
+              </h3>
+              <p>Find all elements with a specific class.</p>
+              <code
+                >const items = document.getElementsByClassName("intro");</code
+              >
+            </div>
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-hashtag"></i> By CSS Selector
+              </h3>
+              <p>Find all elements matching a CSS selector.</p>
+              <code>const items = document.querySelectorAll("p.intro");</code>
+            </div>
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-object-group"></i> By Object Collections
+              </h3>
+              <p>
+                Access elements via built-in collections like
+                <code>forms</code>, <code>images</code>, etc.
+              </p>
+              <code>const form = document.forms["frm1"];</code>
+            </div>
           </div>
-          <button onclick="addElement()">Add Element</button>
-          <button onclick="removeElement()">Remove Last Element</button>
-          <script>
-            function addElement() {
-              const newEl = document.createElement('p');
-              newEl.textContent = 'A new paragraph.';
-              document.getElementById('elements-preview').appendChild(newEl);
-            }
-            function removeElement() {
-              const container = document.getElementById('elements-preview');
-              if (container.lastElementChild) {
-                container.removeChild(container.lastElementChild);
-              }
-            }
-          </script>
+          <div class="section-grid">
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-info-circle"></i> More Useful Info
+              </h3>
+              <ul class="feature-list">
+                <li>
+                  <i class="fas fa-info"></i>
+                  <code>getElementById</code> returns a single element or
+                  <code>null</code> if not found.
+                </li>
+                <li>
+                  <i class="fas fa-info"></i>
+                  <code>getElementsByTagName</code>,
+                  <code>getElementsByClassName</code>, and
+                  <code>querySelectorAll</code> return
+                  <strong>collections</strong> (array-like, but not arrays).
+                </li>
+                <li>
+                  <i class="fas fa-info"></i>
+                  <code>querySelector</code> returns only the
+                  <strong>first</strong> matching element.
+                </li>
+                <li>
+                  <i class="fas fa-info"></i> You can loop through collections
+                  with <code>for...of</code> or <code>forEach</code> (after
+                  converting to an array).
+                </li>
+                <li>
+                  <i class="fas fa-info"></i> Object collections include
+                  <code>document.forms</code>, <code>document.images</code>,
+                  <code>document.links</code>, etc.
+                </li>
+                <li>
+                  <i class="fas fa-info"></i> See
+                  <a
+                    href="https://developer.mozilla.org/en-US/docs/Web/API/Document"
+                    target="_blank"
+                    >MDN: Document API</a
+                  >
+                  for more.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="section-example">
+          <div class="section-explaination">
+            <span class="section-subtitle"
+              ><i class="fas fa-terminal"></i> Live Example 1: Finding Elements
+              by ID</span
+            >
+            <p>
+              The most common way to find an element is by its unique
+              <code>id</code> attribute. The <code>getElementById</code> method
+              returns a single element or <code>null</code> if not found.
+            </p>
+          </div>
+          <div class="code-playground">
+            <div class="editor-sandbox-container">
+              <div class="editor-container">
+                <div class="jsEditor" data-editor-id="elements1"></div>
+                <button class="run-button">
+                  <i class="fas fa-play"></i> Run Code
+                </button>
+              </div>
+              <div class="visualization-container">
+                <div class="sandbox-content">
+                  <h3>Preview</h3>
+                  <div class="previewArea" data-editor-id="elements1"></div>
+                </div>
+              </div>
+            </div>
+            <div class="domTree" data-editor-id="elements1"></div>
+          </div>
+        </div>
+
+        <div class="section-example">
+          <div class="section-explaination">
+            <span class="section-subtitle"
+              ><i class="fas fa-terminal"></i> Live Example 2: Finding Elements
+              by Tag Name</span
+            >
+            <p>
+              The <code>getElementsByTagName</code> method returns a
+              <strong>collection</strong> of all elements with the specified tag
+              name. Access individual elements using array-like indexing.
+            </p>
+          </div>
+          <div class="code-playground">
+            <div class="editor-sandbox-container">
+              <div class="editor-container">
+                <div class="jsEditor" data-editor-id="elements2"></div>
+                <button class="run-button">
+                  <i class="fas fa-play"></i> Run Code
+                </button>
+              </div>
+              <div class="visualization-container">
+                <div class="sandbox-content">
+                  <h3>Preview</h3>
+                  <div class="previewArea" data-editor-id="elements2"></div>
+                </div>
+              </div>
+            </div>
+            <div class="domTree" data-editor-id="elements2"></div>
+          </div>
+        </div>
+
+        <div class="section-example">
+          <div class="section-explaination">
+            <span class="section-subtitle"
+              ><i class="fas fa-terminal"></i> Live Example 3: Finding Elements
+              by Tag Name (within a specific element)</span
+            >
+            <p>
+              You can also find elements within a specific parent element by
+              first getting the parent, then calling
+              <code>getElementsByTagName</code> on it.
+            </p>
+          </div>
+          <div class="code-playground">
+            <div class="editor-sandbox-container">
+              <div class="editor-container">
+                <div class="jsEditor" data-editor-id="elements3"></div>
+                <button class="run-button">
+                  <i class="fas fa-play"></i> Run Code
+                </button>
+              </div>
+              <div class="visualization-container">
+                <div class="sandbox-content">
+                  <h3>Preview</h3>
+                  <div class="previewArea" data-editor-id="elements3"></div>
+                </div>
+              </div>
+            </div>
+            <div class="domTree" data-editor-id="elements3"></div>
+          </div>
+        </div>
+
+        <div class="section-example">
+          <div class="section-explaination">
+            <span class="section-subtitle"
+              ><i class="fas fa-terminal"></i> Live Example 4: Finding Elements
+              by Class Name</span
+            >
+            <p>
+              The <code>getElementsByClassName</code> method returns all
+              elements that have the specified class name. Like
+              <code>getElementsByTagName</code>, it returns a collection.
+            </p>
+          </div>
+          <div class="code-playground">
+            <div class="editor-sandbox-container">
+              <div class="editor-container">
+                <div class="jsEditor" data-editor-id="elements4"></div>
+                <button class="run-button">
+                  <i class="fas fa-play"></i> Run Code
+                </button>
+              </div>
+              <div class="visualization-container">
+                <div class="sandbox-content">
+                  <h3>Preview</h3>
+                  <div class="previewArea" data-editor-id="elements4"></div>
+                </div>
+              </div>
+            </div>
+            <div class="domTree" data-editor-id="elements4"></div>
+          </div>
         </div>
       </section>
     </main>
 
     <div class="dark-mode-toggle" id="darkModeToggle">
-      <i class="fas fa-moon"></i>
+      <i class="fas fa-sun"></i>
     </div>
 
-    <script src="javascript.js"></script>
+    <!-- Application JavaScript -->
+    <script src="app.js"></script>
   </body>
 </html>
