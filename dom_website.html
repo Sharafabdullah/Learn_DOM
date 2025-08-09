@@ -53,6 +53,9 @@
         <a href="#elements"
           ><i class="fas fa-puzzle-piece"></i><span>Elements</span></a
         >
+        <a href="#changing-html"
+          ><i class="fas fa-edit"></i><span>Changing HTML</span></a
+        >
         <a href="#html"><i class="fas fa-code"></i><span>HTML</span></a>
         <a href="#css"><i class="fas fa-paint-brush"></i><span>CSS</span></a>
         <a href="#animations"
@@ -162,9 +165,21 @@
             <div class="editor-sandbox-container">
               <div class="editor-container">
                 <div class="jsEditor" data-editor-id="introduction1"></div>
-                <button class="run-button">
-                  <i class="fas fa-play"></i> Run Code
-                </button>
+                <div class="tree-toggle-container">
+                  <label class="tree-toggle">
+                    <input
+                      type="checkbox"
+                      class="tree-toggle-input"
+                      data-editor-id="introduction1"
+                      checked
+                    />
+                    <span class="tree-toggle-slider"></span>
+                  </label>
+                  <span class="tree-toggle-label">Show DOM Tree</span>
+                  <button class="run-button">
+                    <i class="fas fa-play"></i> Run Code
+                  </button>
+                </div>
               </div>
 
               <div class="visualization-container">
@@ -288,9 +303,21 @@
             <div class="editor-sandbox-container">
               <div class="editor-container">
                 <div class="jsEditor" data-editor-id="methods1"></div>
-                <button class="run-button">
-                  <i class="fas fa-play"></i> Run Code
-                </button>
+                <div class="tree-toggle-container">
+                  <label class="tree-toggle">
+                    <input
+                      type="checkbox"
+                      class="tree-toggle-input"
+                      data-editor-id="methods1"
+                      checked
+                    />
+                    <span class="tree-toggle-slider"></span>
+                  </label>
+                  <span class="tree-toggle-label">Show DOM Tree</span>
+                  <button class="run-button">
+                    <i class="fas fa-play"></i> Run Code
+                  </button>
+                </div>
               </div>
 
               <div class="visualization-container">
@@ -349,6 +376,51 @@
                 </tbody>
               </table>
             </div>
+
+            <!-- Example: getElementById -->
+          </div> <!-- end section-grid__item -->
+
+          <div class="section-example">
+            <span class="section-subtitle"
+              ><i class="fas fa-terminal"></i> Live Example: Finding
+              Elements by ID</span
+            >
+            <p>
+              The most common way to find an element is by its unique
+              <code>id</code> attribute. The
+              <code>getElementById</code> method returns a single element or
+              <code>null</code> if not found.
+            </p>
+            <div class="code-playground">
+              <div class="editor-sandbox-container">
+                <div class="editor-container">
+                  <div class="jsEditor" data-editor-id="elements1"></div>
+                  <div class="tree-toggle-container">
+                    <label class="tree-toggle">
+                      <input
+                        type="checkbox"
+                        class="tree-toggle-input"
+                        data-editor-id="elements1"
+                        checked
+                      />
+                      <span class="tree-toggle-slider"></span>
+                    </label>
+                    <span class="tree-toggle-label">Show DOM Tree</span>
+                    <button class="run-button">
+                      <i class="fas fa-play"></i> Run Code
+                    </button>
+                  </div>
+                </div>
+                <div class="visualization-container">
+                  <div class="sandbox-content">
+                    <h3>Preview</h3>
+                    <div class="previewArea" data-editor-id="elements1"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="domTree" data-editor-id="elements1"></div>
+            </div>
+          </div>
             <div class="section-grid__item">
               <h3 class="section-subtitle">
                 <i class="fas fa-edit"></i> Changing HTML Elements
@@ -541,9 +613,21 @@
             <div class="editor-sandbox-container">
               <div class="editor-container">
                 <div class="jsEditor" data-editor-id="document1"></div>
-                <button class="run-button">
-                  <i class="fas fa-play"></i> Run Code
-                </button>
+                <div class="tree-toggle-container">
+                  <label class="tree-toggle">
+                    <input
+                      type="checkbox"
+                      class="tree-toggle-input"
+                      data-editor-id="document1"
+                      checked
+                    />
+                    <span class="tree-toggle-slider"></span>
+                  </label>
+                  <span class="tree-toggle-label">Show DOM Tree</span>
+                  <button class="run-button">
+                    <i class="fas fa-play"></i> Run Code
+                  </button>
+                </div>
               </div>
               <div class="visualization-container">
                 <div class="sandbox-content">
@@ -588,12 +672,101 @@
               </h3>
               <p>Find all elements with a given tag name.</p>
               <code>const ps = document.getElementsByTagName("p");</code>
-              <p>Find all <code>&lt;p&gt;</code> inside an element:</p>
-              <code
-                >const main = document.getElementById("main");<br />const ps =
-                main.getElementsByTagName("p");</code
-              >
             </div>
+            <div class="section-grid__item">
+              <h3 class="section-subtitle">
+                <i class="fas fa-list"></i> By Class Name
+              </h3>
+              <p>Find all elements with a specific class.</p>
+              <code>const items = document.getElementsByClassName("intro");</code>
+            </div>
+          </div>
+
+          <div class="section-example">
+            <span class="section-subtitle"
+              ><i class="fas fa-terminal"></i> Live Example: Finding
+              Elements by Tag Name</span
+            >
+            <p>
+              The <code>getElementsByTagName</code> method returns a
+              <strong>collection</strong> of all elements with the specified
+              tag name. Access individual elements using array-like
+              indexing.
+            </p>
+            <div class="code-playground">
+              <div class="editor-sandbox-container">
+                <div class="editor-container">
+                  <div class="jsEditor" data-editor-id="elements2"></div>
+                  <div class="tree-toggle-container">
+                    <label class="tree-toggle">
+                      <input
+                        type="checkbox"
+                        class="tree-toggle-input"
+                        data-editor-id="elements2"
+                        checked
+                      />
+                      <span class="tree-toggle-slider"></span>
+                    </label>
+                    <span class="tree-toggle-label">Show DOM Tree</span>
+                    <button class="run-button">
+                      <i class="fas fa-play"></i> Run Code
+                    </button>
+                  </div>
+                </div>
+                <div class="visualization-container">
+                  <div class="sandbox-content">
+                    <h3>Preview</h3>
+                    <div class="previewArea" data-editor-id="elements2"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="domTree" data-editor-id="elements2"></div>
+            </div>
+          </div>
+
+            <!-- Example: getElementsByTagName (scoped) -->
+          </div> <!-- end section-grid__item -->
+
+          <div class="section-example">
+            <span class="section-subtitle"
+              ><i class="fas fa-terminal"></i> Live Example: Finding
+              Elements by Tag Name (within a specific element)</span
+            >
+            <p>
+              You can also find elements within a specific parent element by
+              first getting the parent, then calling
+              <code>getElementsByTagName</code> on it.
+            </p>
+            <div class="code-playground">
+              <div class="editor-sandbox-container">
+                <div class="editor-container">
+                  <div class="jsEditor" data-editor-id="elements3"></div>
+                  <div class="tree-toggle-container">
+                    <label class="tree-toggle">
+                      <input
+                        type="checkbox"
+                        class="tree-toggle-input"
+                        data-editor-id="elements3"
+                        checked
+                      />
+                      <span class="tree-toggle-slider"></span>
+                    </label>
+                    <span class="tree-toggle-label">Show DOM Tree</span>
+                    <button class="run-button">
+                      <i class="fas fa-play"></i> Run Code
+                    </button>
+                  </div>
+                </div>
+                <div class="visualization-container">
+                  <div class="sandbox-content">
+                    <h3>Preview</h3>
+                    <div class="previewArea" data-editor-id="elements3"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="domTree" data-editor-id="elements3"></div>
+            </div>
+          </div>
             <div class="section-grid__item">
               <h3 class="section-subtitle">
                 <i class="fas fa-list"></i> By Class Name
@@ -603,6 +776,50 @@
                 >const items = document.getElementsByClassName("intro");</code
               >
             </div>
+
+            <!-- Example: getElementsByClassName -->
+          </div> <!-- end section-grid__item -->
+
+          <div class="section-example">
+            <span class="section-subtitle"
+              ><i class="fas fa-terminal"></i> Live Example: Finding
+              Elements by Class Name</span
+            >
+            <p>
+              The <code>getElementsByClassName</code> method returns all
+              elements that have the specified class name. Like
+              <code>getElementsByTagName</code>, it returns a collection.
+            </p>
+            <div class="code-playground">
+              <div class="editor-sandbox-container">
+                <div class="editor-container">
+                  <div class="jsEditor" data-editor-id="elements4"></div>
+                  <div class="tree-toggle-container">
+                    <label class="tree-toggle">
+                      <input
+                        type="checkbox"
+                        class="tree-toggle-input"
+                        data-editor-id="elements4"
+                        checked
+                      />
+                      <span class="tree-toggle-slider"></span>
+                    </label>
+                    <span class="tree-toggle-label">Show DOM Tree</span>
+                    <button class="run-button">
+                      <i class="fas fa-play"></i> Run Code
+                    </button>
+                  </div>
+                </div>
+                <div class="visualization-container">
+                  <div class="sandbox-content">
+                    <h3>Preview</h3>
+                    <div class="previewArea" data-editor-id="elements4"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="domTree" data-editor-id="elements4"></div>
+            </div>
+          </div>
             <div class="section-grid__item">
               <h3 class="section-subtitle">
                 <i class="fas fa-hashtag"></i> By CSS Selector
@@ -667,130 +884,221 @@
             </div>
           </div>
         </div>
+      </section>
+
+      <!-- BEGIN: Changing HTML Section -->
+      <section id="changing-html">
+        <div class="section-explaination">
+          <h2 class="section-title">
+            <i class="fas fa-edit"></i>
+            Changing HTML Content
+          </h2>
+          
+          <p class="section-paragraph">
+            The HTML DOM allows JavaScript to change the content of HTML elements. The easiest way to modify the content of an HTML element is by using the <code>innerHTML</code> property.
+          </p>
+
+          <h3 class="section-subtitle">
+            <i class="fas fa-code"></i>
+            Changing HTML Content
+          </h3>
+          <p class="section-paragraph">
+            To change the content of an HTML element, use this syntax:
+          </p>
+          <code>document.getElementById(id).innerHTML = new HTML</code>
+        </div>
+
         <div class="section-example">
           <div class="section-explaination">
-            <span class="section-subtitle"
-              ><i class="fas fa-terminal"></i> Live Example 1: Finding Elements
-              by ID</span
-            >
+            <span class="section-subtitle"><i class="fas fa-terminal"></i> Live Example: Changing Paragraph Content</span>
             <p>
-              The most common way to find an element is by its unique
-              <code>id</code> attribute. The <code>getElementById</code> method
-              returns a single element or <code>null</code> if not found.
+              The HTML document contains a <code>&lt;p&gt;</code> element with <code>id="p1"</code>. We use the HTML DOM to get the element and change its content using <code>innerHTML</code>.
             </p>
           </div>
           <div class="code-playground">
             <div class="editor-sandbox-container">
               <div class="editor-container">
-                <div class="jsEditor" data-editor-id="elements1"></div>
-                <button class="run-button">
-                  <i class="fas fa-play"></i> Run Code
-                </button>
+                <div class="jsEditor" data-editor-id="changing1"></div>
+                <div class="tree-toggle-container">
+                  <label class="tree-toggle">
+                    <input type="checkbox" class="tree-toggle-input" data-editor-id="changing1" checked />
+                    <span class="tree-toggle-slider"></span>
+                  </label>
+                  <span class="tree-toggle-label">Show DOM Tree</span>
+                  <button class="run-button"><i class="fas fa-play"></i> Run Code</button>
+                </div>
               </div>
               <div class="visualization-container">
                 <div class="sandbox-content">
                   <h3>Preview</h3>
-                  <div class="previewArea" data-editor-id="elements1"></div>
+                  <div class="previewArea" data-editor-id="changing1"></div>
                 </div>
               </div>
             </div>
-            <div class="domTree" data-editor-id="elements1"></div>
+            <div class="domTree" data-editor-id="changing1"></div>
           </div>
         </div>
 
         <div class="section-example">
           <div class="section-explaination">
-            <span class="section-subtitle"
-              ><i class="fas fa-terminal"></i> Live Example 2: Finding Elements
-              by Tag Name</span
-            >
+            <span class="section-subtitle"><i class="fas fa-terminal"></i> Live Example: Changing Heading Content</span>
             <p>
-              The <code>getElementsByTagName</code> method returns a
-              <strong>collection</strong> of all elements with the specified tag
-              name. Access individual elements using array-like indexing.
+              The HTML document contains an <code>&lt;h1&gt;</code> element with <code>id="id01"</code>. We use the HTML DOM to get the element and change its content using <code>innerHTML</code>.
             </p>
           </div>
           <div class="code-playground">
             <div class="editor-sandbox-container">
               <div class="editor-container">
-                <div class="jsEditor" data-editor-id="elements2"></div>
-                <button class="run-button">
-                  <i class="fas fa-play"></i> Run Code
-                </button>
+                <div class="jsEditor" data-editor-id="changing2"></div>
+                <div class="tree-toggle-container">
+                  <label class="tree-toggle">
+                    <input type="checkbox" class="tree-toggle-input" data-editor-id="changing2" checked />
+                    <span class="tree-toggle-slider"></span>
+                  </label>
+                  <span class="tree-toggle-label">Show DOM Tree</span>
+                  <button class="run-button"><i class="fas fa-play"></i> Run Code</button>
+                </div>
               </div>
               <div class="visualization-container">
                 <div class="sandbox-content">
                   <h3>Preview</h3>
-                  <div class="previewArea" data-editor-id="elements2"></div>
+                  <div class="previewArea" data-editor-id="changing2"></div>
                 </div>
               </div>
             </div>
-            <div class="domTree" data-editor-id="elements2"></div>
+            <div class="domTree" data-editor-id="changing2"></div>
           </div>
+        </div>
+
+        <div class="section-explaination">
+          <h3 class="section-subtitle">
+            <i class="fas fa-cog"></i>
+            Changing the Value of an Attribute
+          </h3>
+          <p class="section-paragraph">
+            To change the value of an HTML attribute, use this syntax:
+          </p>
+          <code>document.getElementById(id).attribute = new value</code>
         </div>
 
         <div class="section-example">
           <div class="section-explaination">
-            <span class="section-subtitle"
-              ><i class="fas fa-terminal"></i> Live Example 3: Finding Elements
-              by Tag Name (within a specific element)</span
-            >
+            <span class="section-subtitle"><i class="fas fa-terminal"></i> Live Example: Changing Image Source Attribute</span>
             <p>
-              You can also find elements within a specific parent element by
-              first getting the parent, then calling
-              <code>getElementsByTagName</code> on it.
+              The HTML document contains an <code>&lt;img&gt;</code> element with <code>id="myImage"</code>. We use the HTML DOM to get the element and change its <code>src</code> attribute.
             </p>
           </div>
           <div class="code-playground">
             <div class="editor-sandbox-container">
               <div class="editor-container">
-                <div class="jsEditor" data-editor-id="elements3"></div>
-                <button class="run-button">
-                  <i class="fas fa-play"></i> Run Code
-                </button>
+                <div class="jsEditor" data-editor-id="changing3"></div>
+                <div class="tree-toggle-container">
+                  <label class="tree-toggle">
+                    <input type="checkbox" class="tree-toggle-input" data-editor-id="changing3" checked />
+                    <span class="tree-toggle-slider"></span>
+                  </label>
+                  <span class="tree-toggle-label">Show DOM Tree</span>
+                  <button class="run-button"><i class="fas fa-play"></i> Run Code</button>
+                </div>
               </div>
               <div class="visualization-container">
                 <div class="sandbox-content">
                   <h3>Preview</h3>
-                  <div class="previewArea" data-editor-id="elements3"></div>
+                  <div class="previewArea" data-editor-id="changing3"></div>
                 </div>
               </div>
             </div>
-            <div class="domTree" data-editor-id="elements3"></div>
+            <div class="domTree" data-editor-id="changing3"></div>
           </div>
+        </div>
+
+        <div class="section-explaination">
+          <h3 class="section-subtitle">
+            <i class="fas fa-clock"></i>
+            Dynamic HTML Content
+          </h3>
+          <p class="section-paragraph">
+            JavaScript can create dynamic HTML content. For example, displaying the current date and time:
+          </p>
+          <p class="section-paragraph">
+            <strong>Current Date:</strong> <span id="current-date">Sat Aug 09 2025 22:28:58 GMT+0300 (GMT+03:00)</span>
+          </p>
         </div>
 
         <div class="section-example">
           <div class="section-explaination">
-            <span class="section-subtitle"
-              ><i class="fas fa-terminal"></i> Live Example 4: Finding Elements
-              by Class Name</span
-            >
+            <span class="section-subtitle"><i class="fas fa-terminal"></i> Live Example: Dynamic Date Display</span>
             <p>
-              The <code>getElementsByClassName</code> method returns all
-              elements that have the specified class name. Like
-              <code>getElementsByTagName</code>, it returns a collection.
+              JavaScript can create dynamic HTML content. For example, displaying the current date and time in the page.
             </p>
           </div>
           <div class="code-playground">
             <div class="editor-sandbox-container">
               <div class="editor-container">
-                <div class="jsEditor" data-editor-id="elements4"></div>
-                <button class="run-button">
-                  <i class="fas fa-play"></i> Run Code
-                </button>
+                <div class="jsEditor" data-editor-id="changing4"></div>
+                <div class="tree-toggle-container">
+                  <label class="tree-toggle">
+                    <input type="checkbox" class="tree-toggle-input" data-editor-id="changing4" checked />
+                    <span class="tree-toggle-slider"></span>
+                  </label>
+                  <span class="tree-toggle-label">Show DOM Tree</span>
+                  <button class="run-button"><i class="fas fa-play"></i> Run Code</button>
+                </div>
               </div>
               <div class="visualization-container">
                 <div class="sandbox-content">
                   <h3>Preview</h3>
-                  <div class="previewArea" data-editor-id="elements4"></div>
+                  <div class="previewArea" data-editor-id="changing4"></div>
                 </div>
               </div>
             </div>
-            <div class="domTree" data-editor-id="elements4"></div>
+            <div class="domTree" data-editor-id="changing4"></div>
+          </div>
+        </div>
+
+        <div class="section-explaination">
+          <h3 class="section-subtitle">
+            <i class="fas fa-pen"></i>
+            document.write()
+          </h3>
+          <p class="section-paragraph">
+            In JavaScript, <code>document.write()</code> can be used to write directly to the HTML output stream. 
+            <strong>Note:</strong> This method should be used carefully as it can overwrite existing content.
+          </p>
+        </div>
+
+        <div class="section-example">
+          <div class="section-explaination">
+            <span class="section-subtitle"><i class="fas fa-terminal"></i> Live Example: Using document.write()</span>
+            <p>
+              In JavaScript, <code>document.write()</code> can be used to write directly to the HTML output stream. <strong>Note:</strong> This method should be used carefully as it can overwrite existing content.
+            </p>
+          </div>
+          <div class="code-playground">
+            <div class="editor-sandbox-container">
+              <div class="editor-container">
+                <div class="jsEditor" data-editor-id="changing5"></div>
+                <div class="tree-toggle-container">
+                  <label class="tree-toggle">
+                    <input type="checkbox" class="tree-toggle-input" data-editor-id="changing5" checked />
+                    <span class="tree-toggle-slider"></span>
+                  </label>
+                  <span class="tree-toggle-label">Show DOM Tree</span>
+                  <button class="run-button"><i class="fas fa-play"></i> Run Code</button>
+                </div>
+              </div>
+              <div class="visualization-container">
+                <div class="sandbox-content">
+                  <h3>Preview</h3>
+                  <div class="previewArea" data-editor-id="changing5"></div>
+                </div>
+              </div>
+            </div>
+            <div class="domTree" data-editor-id="changing5"></div>
           </div>
         </div>
       </section>
+      <!-- END: Changing HTML Section -->
     </main>
 
     <div class="dark-mode-toggle" id="darkModeToggle">

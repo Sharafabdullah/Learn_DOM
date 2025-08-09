@@ -171,6 +171,77 @@ const defaultEditorCodeMap = new Map([
   </body>
 </html>`,
   ],
+  [
+    'changing1',
+    `<!-- Changing HTML Content Example: Changing Paragraph -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <p id="p1">Hello World!</p>
+    <script>
+      document.getElementById("p1").innerHTML = "New text!";
+    </script>
+  </body>
+</html>`,
+  ],
+  [
+    'changing2',
+    `<!-- Changing HTML Content Example: Changing Heading -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1 id="id01">Old Heading</h1>
+    <script>
+      const element = document.getElementById("id01");
+      element.innerHTML = "New Heading";
+    </script>
+  </body>
+</html>`,
+  ],
+  [
+    'changing3',
+    `<!-- Changing Attribute Example: Changing Image Source -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <img id="myImage" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Ccircle cx='50' cy='50' r='40' fill='%23FFD700'/%3E%3Ccircle cx='35' cy='40' r='5' fill='%23000'/%3E%3Ccircle cx='65' cy='40' r='5' fill='%23000'/%3E%3Cpath d='M30 65 Q50 80 70 65' stroke='%23000' stroke-width='2' fill='none'/%3E%3C/svg%3E" alt="Smiley">
+    <script>
+      // Change the image source to a landscape
+      document.getElementById("myImage").src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect width='100' height='60' fill='%2387CEEB'/%3E%3Crect y='60' width='100' height='40' fill='%2390EE90'/%3E%3Ccircle cx='20' cy='20' r='15' fill='%23FFD700'/%3E%3Cpolygon points='30,60 40,40 50,60' fill='%23228B22'/%3E%3Cpolygon points='60,60 70,35 80,60' fill='%23228B22'/%3E%3C/svg%3E";
+      document.getElementById("myImage").alt = "Landscape";
+    </script>
+  </body>
+</html>`,
+  ],
+  [
+    'changing4',
+    `<!-- Dynamic HTML Content Example: Display Current Date -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Dynamic Content</h2>
+    <p id="demo"></p>
+    <script>
+      document.getElementById("demo").innerHTML = "Date: " + Date();
+    </script>
+  </body>
+</html>`,
+  ],
+  [
+    'changing5',
+    `<!-- document.write() Example -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Using document.write()</h2>
+    <p>Content before script</p>
+    <script>
+      document.write("Current date and time: " + Date());
+    </script>
+    <p>Content after script</p>
+  </body>
+</html>`,
+  ],
 ]);
 
 // ==================== MAIN APPLICATION CLASS ====================
@@ -184,6 +255,7 @@ class DOMTutorialApp {
     this.previewAreas = new Map();
     this.domTrees = new Map();
     this.simulations = new Map();
+    this.treeToggleStates = new Map(); // Track toggle states for each editor
   }
 
   /**
@@ -228,6 +300,18 @@ class DOMTutorialApp {
     this.storeEditorReferences(editorId, editor, elements);
     this.setupEditorEvents(editorId, elements.runButton);
 
+    // Initialize tree visibility state
+    const treeToggle = elements.treeToggle;
+    if (treeToggle) {
+      const initialState = treeToggle.checked;
+      this.treeToggleStates.set(editorId, initialState);
+      // Set initial visibility
+      this.toggleDOMTreeVisibility(editorId, initialState);
+    } else {
+      // Default to visible if no toggle found
+      this.treeToggleStates.set(editorId, true);
+    }
+
     // Auto-run initial code after a brief delay to ensure DOM is ready
     setTimeout(() => this.executeCode(editorId), 100);
 
@@ -251,12 +335,16 @@ class DOMTutorialApp {
     );
     const runButton =
       editorElement?.parentElement?.querySelector('.run-button');
+    const treeToggle = document.querySelector(
+      `.tree-toggle-input[data-editor-id="${editorId}"]`
+    );
 
     return {
       editorElement,
       previewArea,
       treeElement,
       runButton,
+      treeToggle,
       isValid: !!(editorElement && previewArea && treeElement),
     };
   }
@@ -310,6 +398,18 @@ class DOMTutorialApp {
     if (runButton) {
       runButton.addEventListener('click', () => this.executeCode(editorId));
     }
+
+    // Set up tree toggle event
+    const treeToggle = document.querySelector(
+      `.tree-toggle-input[data-editor-id="${editorId}"]`
+    );
+    if (treeToggle) {
+      treeToggle.addEventListener('change', () => {
+        const isVisible = treeToggle.checked;
+        this.treeToggleStates.set(editorId, isVisible);
+        this.toggleDOMTreeVisibility(editorId, isVisible);
+      });
+    }
   }
 
   /**
@@ -328,17 +428,59 @@ class DOMTutorialApp {
       // Create an isolated iframe for true browser-like behavior
       this.createIsolatedPreview(previewArea, code);
 
-      // Update DOM tree visualization after a brief delay to allow iframe to load
-      setTimeout(() => {
-        const graphData = this.createDOMGraphDataFromIframe(previewArea);
-        if (graphData.nodes.length > 1) {
-          this.renderDOMVisualization(editorId, graphData);
-        }
-      }, 100);
+      // Only update DOM tree visualization if toggle is enabled
+      const isTreeVisible = this.treeToggleStates.get(editorId);
+      if (isTreeVisible) {
+        setTimeout(() => {
+          const graphData = this.createDOMGraphDataFromIframe(previewArea);
+          if (graphData.nodes.length > 1) {
+            this.renderDOMVisualization(editorId, graphData);
+          }
+        }, 100);
+      }
     } catch (error) {
       previewArea.innerHTML = `<div style="color: #ff5555; padding: 1rem;">
         <strong>Error:</strong> ${error.message}
       </div>`;
+    }
+  }
+
+  /**
+   * Toggle the visibility of DOM tree visualization
+   * @param {string} editorId - The editor identifier
+   * @param {boolean} isVisible - Whether the tree should be visible
+   */
+  toggleDOMTreeVisibility(editorId, isVisible) {
+    const treeElement = this.domTrees.get(editorId);
+    if (!treeElement) return;
+
+    if (isVisible) {
+      // Show the tree and regenerate visualization
+      treeElement.style.display = 'block';
+      treeElement.style.opacity = '1';
+      treeElement.style.transform = 'translateY(0)';
+      const previewArea = this.previewAreas.get(editorId);
+      if (previewArea) {
+        setTimeout(() => {
+          const graphData = this.createDOMGraphDataFromIframe(previewArea);
+          if (graphData.nodes.length > 1) {
+            this.renderDOMVisualization(editorId, graphData);
+          }
+        }, 100);
+      }
+    } else {
+      // Hide the tree with animation
+      treeElement.style.opacity = '0';
+      treeElement.style.transform = 'translateY(-20px)';
+      const simulation = this.simulations.get(editorId);
+      if (simulation) {
+        simulation.stop();
+      }
+      // Hide completely after animation
+      setTimeout(() => {
+        treeElement.style.display = 'none';
+        treeElement.innerHTML = '';
+      }, 300);
     }
   }
 

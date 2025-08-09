@@ -236,7 +236,6 @@ nav a.active {
   backdrop-filter: blur(8px) saturate(160%);
   -webkit-backdrop-filter: blur(8px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  overflow: hidden;
 }
 
 nav a:hover::before,
