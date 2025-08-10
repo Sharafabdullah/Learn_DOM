@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#container {
+  width: 400px;
+  height: 400px;
+  position: relative;
+  background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+  border: 2px solid #333;
+  border-radius: 10px;
+}
+#animate {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background: red;
+  border-radius: 50%;
+  transition: all 0.1s;
+}
+</style>
+</head>
+<body>
+
+<h1>Advanced Multi-Property Animation</h1>
+
+<button onclick="complexAnimation()">Start Complex Animation</button>
+<button onclick="resetAnimation()">Reset</button>
+
+<div id="container">
+  <div id="animate"></div>
+</div>
+
+<script>
+function complexAnimation() {
+  let id = null;
+  const elem = document.getElementById("animate");
+  let pos = 0;
+  let size = 40;
+  let rotation = 0;
+  let hue = 0;
+  
+  clearInterval(id);
+  id = setInterval(frame, 20);
+  
+  function frame() {
+    if (pos >= 300) {
+      clearInterval(id);
+    } else {
+      pos += 2;
+      size = 40 + Math.sin(pos * 0.1) * 20;
+      rotation += 5;
+      hue = (pos * 2) % 360;
+      
+      elem.style.left = pos + 'px';
+      elem.style.top = (200 + Math.sin(pos * 0.05) * 100) + 'px';
+      elem.style.width = size + 'px';
+      elem.style.height = size + 'px';
+      elem.style.transform = 'rotate(' + rotation + 'deg)';
+      elem.style.backgroundColor = 'hsl(' + hue + ', 70%, 50%)';
+    }
+  }
+}
+
+function resetAnimation() {
+  const elem = document.getElementById("animate");
+  elem.style.left = '0px';
+  elem.style.top = '0px';
+  elem.style.width = '40px';
+  elem.style.height = '40px';
+  elem.style.transform = 'rotate(0deg)';
+  elem.style.backgroundColor = 'red';
+}
+</script>
+
+</body>
+</html>

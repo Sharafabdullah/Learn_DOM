@@ -1,5 +1,5 @@
 // DOM visualization and preview management for DOM Tutorial App
-import { CONFIG } from "./config.js";
+import { CONFIG } from "./config-optimized.js";
 
 /**
  * DOM Visualizer class for handling code execution, preview generation, and DOM tree visualization

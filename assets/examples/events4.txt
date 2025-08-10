@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Assign Events Using DOM</h2>
+    <button id="myBtn">Click me!</button>
+    <p id="demo"></p>
+
+    <script>
+    document.getElementById("myBtn").onclick = displayMessage;
+
+    function displayMessage() {
+        document.getElementById("demo").innerHTML = "Hello! Event was assigned using JavaScript DOM.";
+        document.getElementById("myBtn").style.backgroundColor = "#4CAF50";
+        document.getElementById("myBtn").style.color = "white";
+    }
+    </script>
+</body>
+</html>

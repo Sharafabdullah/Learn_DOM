@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Automatic HTML Form Validation</h2>
+  <form action="#" method="post">
+    <input type="text" name="fname" required placeholder="Enter your name">
+    <input type="submit" value="Submit">
+  </form>
+  <p>Try submitting without entering a name!</p>
+</body>
+</html>

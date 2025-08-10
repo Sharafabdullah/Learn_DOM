@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #trackingArea {
+            width: 400px;
+            height: 200px;
+            background-color: #f0f0f0;
+            border: 2px solid #333;
+            margin: 20px 0;
+            padding: 20px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <h2>Adding and Removing Event Listeners</h2>
+    <button id="startBtn">Start Mouse Tracking</button>
+    <button id="stopBtn">Stop Mouse Tracking</button>
+    <div id="trackingArea">Move your mouse here when tracking is enabled</div>
+    <p id="mouseInfo">Mouse tracking: <span id="status">Stopped</span></p>
+    <p id="coordinates">Coordinates will appear here</p>
+
+    <script>
+    const trackingArea = document.getElementById("trackingArea");
+    const startBtn = document.getElementById("startBtn");
+    const stopBtn = document.getElementById("stopBtn");
+    const status = document.getElementById("status");
+    const coordinates = document.getElementById("coordinates");
+
+    function trackMouse(event) {
+        const rect = trackingArea.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+        coordinates.innerHTML = `Mouse position: X=${Math.round(x)}, Y=${Math.round(y)}`;
+    }
+
+    function startTracking() {
+        trackingArea.addEventListener("mousemove", trackMouse);
+        status.textContent = "Active";
+        status.style.color = "green";
+        trackingArea.style.backgroundColor = "#e8f5e8";
+        coordinates.innerHTML = "Mouse tracking started - move mouse over the area";
+    }
+
+    function stopTracking() {
+        trackingArea.removeEventListener("mousemove", trackMouse);
+        status.textContent = "Stopped";
+        status.style.color = "red";
+        trackingArea.style.backgroundColor = "#f0f0f0";
+        coordinates.innerHTML = "Mouse tracking stopped";
+    }
+
+    startBtn.addEventListener("click", startTracking);
+    stopBtn.addEventListener("click", stopTracking);
+    </script>
+</body>
+</html>

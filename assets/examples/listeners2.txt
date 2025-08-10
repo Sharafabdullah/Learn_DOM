@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Anonymous vs Named Functions</h2>
+    <button id="btn1">Anonymous Function</button>
+    <button id="btn2">Named Function</button>
+    <p id="result"></p>
+
+    <script>
+    // Anonymous function
+    document.getElementById("btn1").addEventListener("click", function() {
+        document.getElementById("result").innerHTML = "Anonymous function called!";
+        document.getElementById("result").style.color = "blue";
+    });
+
+    // Named function
+    document.getElementById("btn2").addEventListener("click", myNamedFunction);
+
+    function myNamedFunction() {
+        document.getElementById("result").innerHTML = "Named function called!";
+        document.getElementById("result").style.color = "green";
+    }
+    </script>
+</body>
+</html>

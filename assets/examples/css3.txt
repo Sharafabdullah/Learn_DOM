@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="myElement">This element can be hidden!</h1>
+
+<button type="button" onclick="hideElement()">Hide Element</button>
+<button type="button" onclick="showElement()">Show Element</button>
+
+<script>
+function hideElement() {
+  document.getElementById("myElement").style.display = "none";
+}
+
+function showElement() {
+  document.getElementById("myElement").style.display = "block";
+}
+</script>
+
+</body>
+</html>

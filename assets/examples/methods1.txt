@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>DOM Methods Example</h2>
+    <p id="output">Original content</p>
+    <button onclick="changeContent()">Change Content</button>
+    <script>
+      function changeContent() {
+        document.getElementById("output").innerHTML =
+          "Content changed using DOM methods!";
+      }
+    </script>
+  </body>
+</html>

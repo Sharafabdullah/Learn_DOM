@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #hover-box {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+            text-align: center;
+            line-height: 100px;
+            margin: 20px 0;
+            cursor: pointer;
+            border: 2px solid #333;
+            transition: all 0.3s ease;
+        }
+        
+        #click-box {
+            width: 200px;
+            height: 100px;
+            background-color: lightgreen;
+            text-align: center;
+            line-height: 100px;
+            margin: 20px 0;
+            cursor: pointer;
+            border: 2px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <h2>Mouse Events Example</h2>
+    
+    <div id="hover-box" 
+         onmouseover="mouseOver(this)" 
+         onmouseout="mouseOut(this)">
+        Mouse Over Me!
+    </div>
+    
+    <div id="click-box"
+         onmousedown="mouseDown(this)"
+         onmouseup="mouseUp(this)"
+         onclick="mouseClick(this)">
+        Click Me!
+    </div>
+    
+    <p id="event-log">Hover and click the boxes above to see mouse events in action!</p>
+
+    <script>
+    function mouseOver(obj) {
+        obj.innerHTML = "Thank You";
+        obj.style.backgroundColor = "orange";
+        obj.style.transform = "scale(1.1)";
+        updateLog("Mouse entered the hover box");
+    }
+
+    function mouseOut(obj) {
+        obj.innerHTML = "Mouse Over Me!";
+        obj.style.backgroundColor = "lightblue";
+        obj.style.transform = "scale(1)";
+        updateLog("Mouse left the hover box");
+    }
+
+    function mouseDown(obj) {
+        obj.style.backgroundColor = "darkgreen";
+        obj.innerHTML = "Mouse Down";
+        updateLog("Mouse button pressed down");
+    }
+
+    function mouseUp(obj) {
+        obj.style.backgroundColor = "lightgreen";
+        obj.innerHTML = "Mouse Up";
+        updateLog("Mouse button released");
+    }
+
+    function mouseClick(obj) {
+        obj.innerHTML = "Clicked!";
+        updateLog("Complete click event fired");
+        setTimeout(() => {
+            obj.innerHTML = "Click Me!";
+        }, 1000);
+    }
+
+    function updateLog(message) {
+        document.getElementById("event-log").innerHTML = "Last event: " + message;
+    }
+    </script>
+</body>
+</html>

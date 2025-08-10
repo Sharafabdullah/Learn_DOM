@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+document.getElementById("demo").innerHTML = "Date : " + Date();
+</script>
+
+</body>
+</html>

@@ -1,9 +1,121 @@
 /** Copied from original app.js **/
 
 // Import configuration and editor code map
-import { CONFIG, defaultEditorCodeMap } from "./config.js";
+import { CONFIG, defaultEditorCodeMap } from "./config-optimized.js";
 import { EditorManager } from "./editors.js";
 import { DOMVisualizer } from "./dom-visualizer.js";
+
+// Initialize performance monitor with error handling
+// let perfMonitor = {
+//   startTimer: () => {},
+//   endTimer: () => {},
+//   logMetrics: () => {},
+//   startMonitoring: () => {},
+// };
+
+// // Helper function to safely call perfMonitor methods
+// function safePerfCall(method, ...args) {
+//   if (perfMonitor && typeof perfMonitor[method] === "function") {
+//     return perfMonitor[method](...args);
+//   }
+// }
+
+// async function initializePerformanceMonitor() {
+//   try {
+//     const { perfMonitor: pm } = await import("./performance-monitor.js");
+//     if (pm && typeof pm === "object") {
+//       // Safely merge the real performance monitor with fallbacks
+//       perfMonitor = {
+//         startTimer: pm.startTimer || (() => {}),
+//         endTimer: pm.endTimer || (() => {}),
+//         logMetrics: pm.logMetrics || (() => {}),
+//         startMonitoring: pm.startMonitoring || (() => {}),
+//       };
+//       if (perfMonitor.startMonitoring) {
+//         perfMonitor.startMonitoring();
+//         console.log("Performance monitoring enabled");
+//       }
+//     }
+//   } catch (error) {
+//     console.warn("Performance monitor not available:", error);
+//     // perfMonitor already has dummy functions
+//   }
+// }
+
+// ==================== TUTORIAL MANAGER CLASS ====================
+
+/**
+ * SPA Tutorial Manager - Lazy Loading Implementation
+ */
+class TutorialManager {
+  constructor() {
+    this.currentTutorial = null;
+    this.loadedTutorials = new Set();
+    this.tutorialContent = document.getElementById("tutorial-content");
+  }
+
+  async loadTutorial(tutorialId) {
+    // Avoid reloading the same tutorial
+    if (this.currentTutorial === tutorialId) return;
+
+    try {
+      // Load tutorial HTML
+      const url = `./assets/tutorial-pages/${tutorialId}.html`;
+      console.log(`Fetching: ${url}`);
+      const response = await fetch(url);
+
+      //   console.log(`Response status: ${response.status}`);
+      if (!response.ok)
+        throw new Error(`Failed to load ${tutorialId}: ${response.status}`);
+
+      const content = await response.text();
+      console.log(`Content loaded, length: ${content.length}`);
+
+      // Clear current content and load new
+      this.tutorialContent.innerHTML = content;
+      this.currentTutorial = tutorialId;
+
+      // Initialize editors for this tutorial only
+
+      this.cleanupPreviousTutorial();
+
+      // Initialize new tutorial - wait for animation frame (after the next repaint)
+      requestAnimationFrame(() => {
+        window.app.editorManager.setupExistingEditors();
+      });
+
+      this.loadedTutorials.add(tutorialId);
+      console.log(`Successfully loaded tutorial: ${tutorialId}`);
+    } catch (error) {
+      console.error(`Error loading tutorial ${tutorialId}:`, error);
+      this.tutorialContent.innerHTML = `
+        <div class="error-state">
+          <h2>Error Loading Tutorial</h2>
+          <p>Failed to load tutorial: ${tutorialId}</p>
+          <button onclick="window.tutorialManager.loadTutorial('${tutorialId}')">
+            Retry
+          </button>
+        </div>
+      `;
+    }
+  }
+
+  cleanupPreviousTutorial() {
+    window.app.editors.forEach(editor => {
+      if (editor && editor.toTextArea) {
+        editor.toTextArea();
+      }
+    });
+    window.app.editors.clear();
+    window.app.previewAreas.clear();
+    window.app.domTrees.clear();
+    window.app.simulations.forEach(sim => {
+      if (sim && sim.stop) sim.stop();
+    });
+    window.app.simulations.clear();
+    window.app.treeToggleStates.clear();
+  }
+}
 
 // ==================== MAIN APPLICATION CLASS ====================
 
@@ -12,6 +124,7 @@ import { DOMVisualizer } from "./dom-visualizer.js";
  */
 class DOMTutorialApp {
   constructor() {
+    // These three maps track the state of various components
     this.editors = new Map();
     this.previewAreas = new Map();
     this.domTrees = new Map();
@@ -19,6 +132,7 @@ class DOMTutorialApp {
     this.treeToggleStates = new Map(); // Track toggle states for each editor
     this.editorManager = new EditorManager(this);
     this.domVisualizer = new DOMVisualizer(this);
+    this.tutorialManager = new TutorialManager();
   }
 
   /**
@@ -27,7 +141,7 @@ class DOMTutorialApp {
   initialize() {
     try {
       console.log("Setting up existing editors...");
-      this.editorManager.setupExistingEditors();
+      // this.editorManager.setupExistingEditors();
       console.log("Setting up UI events...");
       this.setupUIEvents();
       console.log("Application initialized successfully!");
@@ -93,58 +207,28 @@ class DOMTutorialApp {
   }
 
   /**
-   * Set up smooth scrolling for navigation links
+   * Set up smooth scrolling for navigation links - Disabled for SPA (handled in index.html)
    */
   setupSmoothScrolling() {
-    document.querySelectorAll("nav a").forEach(anchor => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        e.target.blur();
-        const targetElement = document.querySelector(this.getAttribute("href"));
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: "smooth" });
-        }
-      });
-    });
+    // Navigation is now handled by TutorialManager in index.html
+    // This method is kept for compatibility but does nothing in SPA mode
+    console.log("Navigation handled by TutorialManager in SPA mode");
   }
 
   /**
-   * Set up scroll animations and active link highlighting
+   * Set up scroll animations and active link highlighting - Simplified for SPA
    */
   setupScrollAnimations() {
+    // Simplified for SPA - no intersection observer needed
+    // Active link highlighting is handled in setupSmoothScrolling
     const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a");
+    console.log("Found sections:", sections.length);
 
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            navLinks.forEach(link => {
-              link.classList.toggle(
-                "active",
-                link.getAttribute("href") === `#${entry.target.id}`
-              );
-            });
-          }
-        });
-      },
-      {
-        rootMargin: `-${window.innerHeight * 0.9}px 0px -${
-          window.innerHeight * 0.1
-        }px 0px`,
-      }
-    );
-
-    sections.forEach((section, index) => {
-      // Keep the first section visible, hide the rest
-      if (index === 0) {
-        section.classList.add("visible");
-      } else {
-        section.classList.remove("visible");
-      }
-      observer.observe(section);
-    });
+    // Set first nav item as active by default
+    const firstNavLink = document.querySelector("nav a");
+    if (firstNavLink) {
+      firstNavLink.classList.add("active");
+    }
   }
 
   /**
@@ -179,19 +263,46 @@ class DOMTutorialApp {
 const app = new DOMTutorialApp();
 
 // Initialize the application when DOM is ready
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOM Content Loaded - Initializing app...");
-  setTimeout(() => {
-    app.initialize();
-  }, 500);
+document.addEventListener("DOMContentLoaded", async () => {
+  console.log("DOM Content Loaded - Setting up SPA navigation...");
 
-  // Section visibility is now handled by setupScrollAnimations
-  const sections = document.querySelectorAll("section");
-  console.log("Found sections:", sections.length);
-  sections.forEach((section, index) => {
-    console.log(`Section ${index}: ${section.id}`);
+  // Initialize performance monitoring
+  //   await initializePerformanceMonitor();
+
+  // Set up navigation links
+  const navLinks = document.querySelectorAll("nav a[href^='#']");
+  console.log(`Found ${navLinks.length} navigation links`);
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", async e => {
+      e.preventDefault();
+
+      // Extract tutorial ID from href (remove #)
+      const tutorialId = link.getAttribute("href").substring(1);
+      console.log(`Loading tutorial: ${tutorialId}`);
+
+      // Update active nav item
+      navLinks.forEach(l => l.classList.remove("active"));
+      link.classList.add("active");
+
+      // Load the tutorial
+      await app.tutorialManager.loadTutorial(tutorialId);
+    });
   });
+
+  // Load default tutorial and set first nav item as active
+  const firstNavLink = navLinks[0];
+
+  firstNavLink.classList.add("active");
+  const tutorialId = firstNavLink.getAttribute("href").substring(1);
+
+  app.tutorialManager.loadTutorial(tutorialId);
+
+  app.initialize();
 });
 
-// Export for potential external use
+// Export for global access
 window.DOMTutorialApp = DOMTutorialApp;
+window.app = app;
+window.tutorialManager = app.tutorialManager;
+// window.perfMonitor = perfMonitor;

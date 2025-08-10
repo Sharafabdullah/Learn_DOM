@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Numeric Input Validation</h2>
+  <form name="numForm" onsubmit="return validateNumber()" method="post">
+    Please input a number between 1 and 10:<br>
+    <input type="text" name="numb">
+    <input type="submit" value="Submit">
+  </form>
+  
+  <script>
+    function validateNumber() {
+      let x = document.forms["numForm"]["numb"].value;
+      if (isNaN(x) || x < 1 || x > 10) {
+        alert("Input is not a number between 1 and 10");
+        return false;
+      }
+      alert("Valid number entered: " + x);
+      return false; // Prevent actual submission for demo
+    }
+  </script>
+</body>
+</html>

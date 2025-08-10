@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Multiple Event Handlers</h2>
+    <button id="multiBtn">Multi-Handler Button</button>
+    <div id="output"></div>
+
+    <script>
+    const button = document.getElementById("multiBtn");
+    const output = document.getElementById("output");
+
+    // Multiple click handlers
+    button.addEventListener("click", function() {
+        output.innerHTML += "<p>First click handler executed</p>";
+    });
+
+    button.addEventListener("click", function() {
+        output.innerHTML += "<p>Second click handler executed</p>";
+    });
+
+    // Different event types
+    button.addEventListener("mouseover", function() {
+        this.style.backgroundColor = "lightblue";
+        output.innerHTML += "<p>Mouse over event</p>";
+    });
+
+    button.addEventListener("mouseout", function() {
+        this.style.backgroundColor = "";
+        output.innerHTML += "<p>Mouse out event</p>";
+    });
+
+    // Clear output
+    button.addEventListener("dblclick", function() {
+        output.innerHTML = "<p>Output cleared by double-click</p>";
+    });
+    </script>
+</body>
+</html>

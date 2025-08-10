@@ -1,5 +1,5 @@
 // CodeMirror/editor setup logic for DOM Tutorial App
-import { CONFIG, defaultEditorCodeMap } from "./config.js";
+import { CONFIG, defaultEditorCodeMap } from "./config-optimized.js";
 
 /**
  * Editor management class for handling CodeMirror instances and editor setup
@@ -10,34 +10,74 @@ export class EditorManager {
   }
 
   /**
-   * Set up editors that already exist in the HTML
+   * Set up editors that already exist in the HTML - Optimized for SPA
    */
   setupExistingEditors() {
     const editorElements = document.querySelectorAll(
       ".jsEditor[data-editor-id]"
     );
-    editorElements.forEach(el => {
+
+    console.log(
+      `Setting up ${editorElements.length} editors for current tutorial`
+    );
+
+    // Use requestAnimationFrame for better performance
+    const setupBatch = async (elements, index = 0) => {
+      if (index >= elements.length) return;
+
+      const el = elements[index];
       const editorId = el.getAttribute("data-editor-id");
       console.log(`Initializing editor: ${editorId}`);
-      this.initializeEditor(editorId);
-    });
+      await this.initializeEditor(editorId);
+
+      // Process next editor in next frame
+      if (index + 1 < elements.length) {
+        requestAnimationFrame(() => setupBatch(elements, index + 1));
+      }
+    };
+
+    if (editorElements.length > 0) {
+      requestAnimationFrame(() => setupBatch(editorElements));
+    }
   }
 
   /**
-   * Initialize a single editor group with its preview area and DOM tree
+   * Initialize a single editor group with its preview area and DOM tree - Optimized
    * @param {string} editorId - Unique identifier for the editor
-   * @returns {CodeMirror|null} - The created editor instance or null if failed
+   * @returns {Promise<CodeMirror|null>} - The created editor instance or null if failed
    */
-  initializeEditor(editorId) {
+  async initializeEditor(editorId) {
     const elements = this.findEditorElements(editorId);
     if (!elements.isValid) return null;
 
-    const editor = this.createCodeMirrorInstance(elements.editorElement);
-    this.storeEditorReferences(editorId, editor, elements);
+    const editor = await this.createCodeMirrorInstance(elements.editorElement);
+
+    this.app.editors.set(editorId, editor);
+    this.app.previewAreas.set(editorId, elements.previewArea);
+    this.app.domTrees.set(editorId, elements.treeElement);
+
     this.setupEditorEvents(editorId, elements.runButton);
 
+    if (elements.runButton) {
+      elements.runButton.addEventListener("click", () =>
+        this.app.executeCode(editorId)
+      );
+    }
+
+    // Set up tree toggle event
+    let treeToggle = document.querySelector(
+      `.tree-toggle-input[data-editor-id="${editorId}"]`
+    );
+    if (treeToggle) {
+      treeToggle.addEventListener("change", () => {
+        const isVisible = treeToggle.checked;
+        this.app.treeToggleStates.set(editorId, isVisible);
+        this.app.toggleDOMTreeVisibility(editorId, isVisible);
+      });
+    }
+
     // Initialize tree visibility state
-    const treeToggle = elements.treeToggle;
+    treeToggle = elements.treeToggle;
     if (treeToggle) {
       const initialState = treeToggle.checked;
       this.app.treeToggleStates.set(editorId, initialState);
@@ -86,43 +126,39 @@ export class EditorManager {
   }
 
   /**
-   * Create a CodeMirror editor instance with standard configuration
-   * @param {HTMLElement} editorElement - The DOM element to attach the editor to
-   * @returns {CodeMirror} - The created editor instance
+   * Create a CodeMirror editor instance with standard configuration - Optimized
    */
-  createCodeMirrorInstance(editorElement) {
+  async createCodeMirrorInstance(editorElement) {
     console.log("Creating CodeMirror instance for:", editorElement);
 
     // Use the editor's data-editor-id to get the correct default code
     const editorId = editorElement.getAttribute("data-editor-id");
-    let defaultCode = defaultEditorCodeMap.get(editorId) || "";
 
+    let defaultCode = "";
+    try {
+      // Use async loading for examples
+      defaultCode = (await defaultEditorCodeMap.get(editorId)) || "";
+    } catch (error) {
+      console.warn(`Could not load code for ${editorId}, using empty content`);
+      defaultCode = `<!-- Loading ${editorId}... -->`;
+    }
+    console.log(defaultCode);
     const editor = CodeMirror(editorElement, {
+      value: defaultCode,
       mode: "htmlmixed",
       theme: CONFIG.EDITOR_THEME,
       lineNumbers: true,
+      autoCloseTags: true,
       autoCloseBrackets: true,
       matchBrackets: true,
-      styleActiveLine: true,
-      cursorBlinkRate: 530,
-      tabSize: 2,
-      value: defaultCode,
+      indentUnit: 2,
+      lineWrapping: true,
+      foldGutter: true,
+      gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
     });
 
-    console.log("CodeMirror instance created:", editor);
+    console.log(`CodeMirror editor created for ${editorId}`);
     return editor;
-  }
-
-  /**
-   * Store references to editor components
-   * @param {string} editorId - The editor identifier
-   * @param {CodeMirror} editor - The editor instance
-   * @param {Object} elements - Object containing element references
-   */
-  storeEditorReferences(editorId, editor, elements) {
-    this.app.editors.set(editorId, editor);
-    this.app.previewAreas.set(editorId, elements.previewArea);
-    this.app.domTrees.set(editorId, elements.treeElement);
   }
 
   /**
@@ -130,21 +166,5 @@ export class EditorManager {
    * @param {string} editorId - The editor identifier
    * @param {HTMLElement} runButton - The run button element
    */
-  setupEditorEvents(editorId, runButton) {
-    if (runButton) {
-      runButton.addEventListener("click", () => this.app.executeCode(editorId));
-    }
-
-    // Set up tree toggle event
-    const treeToggle = document.querySelector(
-      `.tree-toggle-input[data-editor-id="${editorId}"]`
-    );
-    if (treeToggle) {
-      treeToggle.addEventListener("change", () => {
-        const isVisible = treeToggle.checked;
-        this.app.treeToggleStates.set(editorId, isVisible);
-        this.app.toggleDOMTreeVisibility(editorId, isVisible);
-      });
-    }
-  }
+  setupEditorEvents(editorId, runButton) {}
 }

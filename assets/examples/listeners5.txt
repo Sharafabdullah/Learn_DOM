@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #outer {
+            width: 300px;
+            height: 200px;
+            background-color: lightblue;
+            padding: 20px;
+            border: 2px solid blue;
+        }
+        #inner {
+            width: 150px;
+            height: 100px;
+            background-color: lightcoral;
+            margin: 20px;
+            border: 2px solid red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Event Bubbling vs Capturing</h2>
+    <div id="outer">
+        Outer Div (Blue)
+        <div id="inner">Inner Div (Click Me!)</div>
+    </div>
+    <button onclick="togglePropagation()">Toggle: <span id="mode">Bubbling</span></button>
+    <p id="eventLog">Click the inner div to see event propagation</p>
+
+    <script>
+    let isCapturing = false;
+
+    function setupEventListeners() {
+        // Remove existing listeners first
+        const outer = document.getElementById("outer");
+        const inner = document.getElementById("inner");
+        
+        // Clear existing listeners by cloning elements
+        const newOuter = outer.cloneNode(true);
+        const newInner = newOuter.querySelector("#inner");
+        outer.parentNode.replaceChild(newOuter, outer);
+
+        // Add new listeners with current capturing setting
+        newOuter.addEventListener("click", function() {
+            updateLog("Outer div clicked");
+        }, isCapturing);
+
+        newInner.addEventListener("click", function() {
+            updateLog("Inner div clicked");
+        }, isCapturing);
+    }
+
+    function updateLog(message) {
+        const log = document.getElementById("eventLog");
+        log.innerHTML += "<br>" + message + " (" + (isCapturing ? "capturing" : "bubbling") + ")";
+    }
+
+    function togglePropagation() {
+        isCapturing = !isCapturing;
+        document.getElementById("mode").textContent = isCapturing ? "Capturing" : "Bubbling";
+        document.getElementById("eventLog").innerHTML = "Mode changed to " + (isCapturing ? "capturing" : "bubbling") + ". Click the inner div to see the difference.";
+        setupEventListeners();
+    }
+
+    // Initial setup
+    setupEventListeners();
+    </script>
+</body>
+</html>

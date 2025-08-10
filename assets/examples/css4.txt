@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1 id="styleMe">Style me with JavaScript!</h1>
+
+<button type="button" onclick="changeMultipleStyles()">Apply Styles</button>
+<button type="button" onclick="resetStyles()">Reset Styles</button>
+
+<script>
+function changeMultipleStyles() {
+  const element = document.getElementById("styleMe");
+  element.style.color = "white";
+  element.style.backgroundColor = "purple";
+  element.style.fontSize = "24px";
+  element.style.padding = "20px";
+  element.style.border = "3px solid gold";
+  element.style.borderRadius = "10px";
+}
+
+function resetStyles() {
+  const element = document.getElementById("styleMe");
+  element.style.color = "";
+  element.style.backgroundColor = "";
+  element.style.fontSize = "";
+  element.style.padding = "";
+  element.style.border = "";
+  element.style.borderRadius = "";
+}
+</script>
+
+</body>
+</html>

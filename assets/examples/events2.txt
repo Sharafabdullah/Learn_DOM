@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1 onclick="changeText(this)">Click on this text!</h1>
+    <p>This example uses a function to handle the click event.</p>
+
+    <script>
+    function changeText(id) {
+        id.innerHTML = "Ooops!";
+        id.style.color = "red";
+        id.style.fontSize = "24px";
+    }
+    </script>
+</body>
+</html>

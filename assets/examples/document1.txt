@@ -1,0 +1,32 @@
+<!-- Document Object Example: Find, Change, Add Elements -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Document Object Demo</h2>
+    <p id="info">This paragraph will be changed using <code>document</code> methods.</p>
+    <button onclick="changeText()">Change Text</button>
+    <button onclick="addElement()">Add Element</button>
+    <button onclick="changeStyle()">Change Style</button>
+    <ul id="myList">
+      <li>Item 1</li>
+      <li>Item 2</li>
+    </ul>
+    <script>
+      // Find and change content
+      function changeText() {
+        document.getElementById('info').innerHTML = 'Paragraph changed!';
+      }
+      // Add a new list item
+      function addElement() {
+        var li = document.createElement('li');
+        li.textContent = 'New Item';
+        document.getElementById('myList').appendChild(li);
+      }
+      // Change style
+      function changeStyle() {
+        document.getElementById('info').style.color = '#e17055';
+        document.getElementById('info').style.fontWeight = 'bold';
+      }
+    </script>
+  </body>
+</html>

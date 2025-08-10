@@ -1,6 +1,59 @@
 /* Futuristic & Animated Theme */
-@import url('./theme_and_animation.css');
-@import url('./header.css');
-@import url('./example_section.css');
-@import url('./layout.css');
-@import url('./components.css');
+@import url("./theme_and_animation.css");
+@import url("./header.css");
+@import url("./example_section.css");
+@import url("./layout.css");
+@import url("./components.css");
+
+/* SPA Loading States */
+.loading-state,
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+.loading-state i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  animation: spin 2s linear infinite;
+}
+
+.error-state i {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--error-color, #ff6b6b);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Active tutorial styling */
+.active-tutorial {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Performance optimization - reduce animations on low-end devices */
+@media (prefers-reduced-motion: reduce) {
+  .loading-state i {
+    animation: none;
+  }
+
+  .active-tutorial {
+    transition: none;
+  }
+}

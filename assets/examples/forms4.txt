@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    input:valid {
+      border: 2px solid green;
+    }
+    input:invalid {
+      border: 2px solid red;
+    }
+    input:required {
+      background-color: #ffe6e6;
+    }
+    .form-group {
+      margin: 10px 0;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Advanced Form Validation with Styling</h2>
+  <form id="advancedForm" novalidate>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+      <label for="age">Age (18-99):</label>
+      <input type="number" id="age" name="age" min="18" max="99" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone (format: 123-456-7890):</label>
+      <input type="text" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+    </div>
+    <input type="submit" value="Submit">
+  </form>
+  
+  <script>
+    document.getElementById('advancedForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (this.checkValidity()) {
+        alert('All fields are valid!');
+      } else {
+        alert('Please fill in all required fields correctly.');
+      }
+    });
+  </script>
+</body>
+</html>

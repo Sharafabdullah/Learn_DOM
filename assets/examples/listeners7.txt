@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Passing Parameters to Event Handlers</h2>
+    <button id="redBtn">Make Red</button>
+    <button id="blueBtn">Make Blue</button>
+    <button id="greenBtn">Make Green</button>
+    <button id="customBtn">Custom Message</button>
+    
+    <div id="colorBox" style="width: 200px; height: 100px; border: 2px solid #333; margin: 20px 0; background-color: white; display: flex; align-items: center; justify-content: center;">
+        Color Box
+    </div>
+    
+    <p id="message">Click buttons to see parameter passing in action</p>
+
+    <script>
+    const colorBox = document.getElementById("colorBox");
+    const message = document.getElementById("message");
+
+    // Function that accepts parameters
+    function changeColor(color, text) {
+        colorBox.style.backgroundColor = color;
+        colorBox.textContent = text;
+        message.innerHTML = `Color changed to ${color} with text: "${text}"`;
+    }
+
+    function showMessage(msg, sender) {
+        message.innerHTML = `Message from ${sender}: ${msg}`;
+        message.style.fontWeight = "bold";
+        setTimeout(() => {
+            message.style.fontWeight = "normal";
+        }, 2000);
+    }
+
+    // Using anonymous functions to pass parameters
+    document.getElementById("redBtn").addEventListener("click", function() {
+        changeColor("lightcoral", "Red Box");
+    });
+
+    document.getElementById("blueBtn").addEventListener("click", function() {
+        changeColor("lightblue", "Blue Box");
+    });
+
+    document.getElementById("greenBtn").addEventListener("click", function() {
+        changeColor("lightgreen", "Green Box");
+    });
+
+    document.getElementById("customBtn").addEventListener("click", function() {
+        showMessage("Hello from event listener!", "Custom Button");
+    });
+
+    // Reset functionality
+    colorBox.addEventListener("dblclick", function() {
+        changeColor("white", "Color Box");
+        message.innerHTML = "Box reset by double-click";
+    });
+    </script>
+</body>
+</html>

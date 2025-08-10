@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Event Attributes Example</h2>
+    <button onclick="displayDate()">What time is it?</button>
+    <p id="demo"></p>
+
+    <script>
+    function displayDate() {
+        const now = new Date();
+        document.getElementById("demo").innerHTML = "Current date and time: " + now.toLocaleString();
+    }
+    </script>
+</body>
+</html>

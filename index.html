@@ -86,39 +86,14 @@
     </header>
 
     <main>
-      <section id="introduction"></section>
-      <section id="methods"></section>
-      <section id="document"></section>
-      <section id="elements"></section>
-      <section id="changing-html"></section>
-      <section id="Forms"></section>
-      <section id="css"></section>
-      <section id="animations"></section>
-      <section id="events"></section>
-      <section id="listeners"></section>
+      <!-- Only one active section at a time for SPA approach -->
+      <section id="tutorial-content" class="active-tutorial"></section>
     </main>
 
     <div class="dark-mode-toggle" id="darkModeToggle">
       <i class="fas fa-sun"></i>
     </div>
 
-    <!-- Application JavaScript -->
-    <script>
-      async function loadHTML(id, file) {
-        const res = await fetch(file);
-        document.getElementById(id).innerHTML = await res.text();
-      }
-      loadHTML("introduction", "./assets/tutorial-pages/introduction.html");
-      loadHTML("methods", "./assets/tutorial-pages/methods.html");
-      loadHTML("document", "./assets/tutorial-pages/document.html");
-      loadHTML("elements", "./assets/tutorial-pages/elements.html");
-      loadHTML("changing-html", "./assets/tutorial-pages/changing-html.html");
-      loadHTML("Forms", "./assets/tutorial-pages/Forms.html");
-      loadHTML("css", "./assets/tutorial-pages/css.html");
-      loadHTML("animations", "./assets/tutorial-pages/animations.html");
-      loadHTML("events", "./assets/tutorial-pages/events.html");
-      loadHTML("listeners", "./assets/tutorial-pages/listeners.html");
-    </script>
     <!-- Application JavaScript -->
     <script type="module" src="./assets/js/app.js"></script>
   </body>

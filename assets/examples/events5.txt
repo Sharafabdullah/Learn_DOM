@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body onload="checkPage()">
+    <h2>Page Load Event</h2>
+    <p id="welcome"></p>
+    <p id="browser-info"></p>
+
+    <script>
+    function checkPage() {
+        document.getElementById("welcome").innerHTML = "Welcome! The page has loaded successfully.";
+        document.getElementById("browser-info").innerHTML = 
+            "Browser: " + navigator.userAgent.substring(0, 50) + "...";
+    }
+    </script>
+</body>
+</html>

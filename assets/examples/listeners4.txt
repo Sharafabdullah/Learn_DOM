@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Window Event Listeners</h2>
+    <p id="windowInfo">Window information will appear here</p>
+    <p id="resizeInfo">Resize the window to see events</p>
+    <button id="loadBtn">Trigger Load Event</button>
+
+    <script>
+    // Window resize event
+    window.addEventListener("resize", function() {
+        document.getElementById("resizeInfo").innerHTML = 
+            "Window resized to: " + window.innerWidth + "x" + window.innerHeight + " at " + new Date().toLocaleTimeString();
+    });
+
+    // Window load event (simulated)
+    document.getElementById("loadBtn").addEventListener("click", function() {
+        document.getElementById("windowInfo").innerHTML = 
+            "Page dimensions: " + window.innerWidth + "x" + window.innerHeight + 
+            "<br>User Agent: " + navigator.userAgent.substring(0, 50) + "...";
+    });
+
+    // Document click event
+    document.addEventListener("click", function(event) {
+        if (event.target.tagName !== "BUTTON") {
+            document.getElementById("windowInfo").innerHTML = 
+                "Document clicked at: " + event.clientX + ", " + event.clientY;
+        }
+    });
+    </script>
+</body>
+</html>
