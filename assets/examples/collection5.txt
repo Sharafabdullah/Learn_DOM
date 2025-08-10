@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Live HTMLCollection Updates</h2>
+  <div id="container">
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+  </div>
+  <button onclick="addParagraph()">Add Paragraph</button>
+  <button onclick="removeParagraph()">Remove Paragraph</button>
+  <div id="demo"></div>
+
+  <script>
+    const myCollection = document.getElementsByTagName("p");
+    
+    function updateDisplay() {
+      document.getElementById("demo").innerHTML = 
+        "Current paragraph count: " + myCollection.length;
+    }
+    
+    function addParagraph() {
+      const newP = document.createElement("p");
+      newP.innerHTML = "New paragraph " + (myCollection.length + 1);
+      document.getElementById("container").appendChild(newP);
+      updateDisplay();
+    }
+    
+    function removeParagraph() {
+      const container = document.getElementById("container");
+      const paragraphs = container.getElementsByTagName("p");
+      if (paragraphs.length > 0) {
+        container.removeChild(paragraphs[paragraphs.length - 1]);
+      }
+      updateDisplay();
+    }
+    
+    // Initial display
+    updateDisplay();
+  </script>
+</body>
+</html>

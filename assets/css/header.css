@@ -222,7 +222,7 @@ header.collapsed nav a span {
   nav a {
     padding: 1.5rem 2rem;
     font-size: var(--font-size-xl);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
   nav a:last-child {
@@ -256,13 +256,13 @@ header.collapsed nav a::before {
 
 nav a:hover,
 nav a.active {
-  color: #fff;
+  color: var(--white-color);
   text-shadow: var(--glow-secondary);
   transform: translateX(7px);
   background: linear-gradient(
     120deg,
-    rgba(179, 125, 255, 0.22) 60%,
-    rgba(26, 26, 46, 0.32) 100%
+    var(--gradient-primary) 60%,
+    var(--gradient-secondary) 100%
   );
   border-radius: 16px;
   box-shadow: 0 2px 16px 0 var(--glow-color);
@@ -271,7 +271,7 @@ nav a.active {
   z-index: 2;
   backdrop-filter: blur(8px) saturate(160%);
   -webkit-backdrop-filter: blur(8px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--border-accent);
 }
 
 nav a:hover::before,

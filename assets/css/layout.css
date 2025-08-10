@@ -2,7 +2,12 @@
 
 /* --- Base Styles --- */
 body {
-  background: linear-gradient(270deg, #1a1a2e, #16213e, #1a1a2e);
+  background: linear-gradient(
+    270deg,
+    var(--bg-gradient-1),
+    var(--bg-gradient-2),
+    var(--bg-gradient-3)
+  );
   background-size: 600% 600%;
   animation: background-pan 20s ease infinite;
   color: var(--text-color);
@@ -157,7 +162,7 @@ section.visible {
 }
 
 .section-grid__item {
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--surface-dark);
   border: 1px solid var(--secondary-color);
   border-radius: 6px;
   box-shadow: inset 0 0 8px rgba(199, 125, 255, 0.3);
@@ -226,7 +231,7 @@ section.visible {
 }
 
 code {
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--surface-darker);
   padding: 0.2em 0.4em;
   border-radius: 4px;
   font-family: var(--font-code);
@@ -240,8 +245,8 @@ code {
   text-shadow: var(--glow-secondary);
   background: linear-gradient(
     120deg,
-    rgba(179, 125, 255, 0.22) 60%,
-    rgba(26, 26, 46, 0.32) 100%
+    var(--gradient-primary) 60%,
+    var(--gradient-secondary) 100%
   );
   border-radius: 0.5em;
   box-shadow: 0 2px 16px 0 var(--glow-color);
@@ -249,7 +254,7 @@ code {
   margin: 0 0.2em;
   backdrop-filter: blur(0.6em) saturate(160%);
   -webkit-backdrop-filter: blur(0.6em) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--border-accent);
 }
 
 table {
@@ -267,7 +272,7 @@ table td {
 }
 
 table th {
-  background: rgba(0, 0, 0, 0.3);
+  background: var(--surface-dark);
   color: var(--primary-color);
   font-family: var(--font-display);
   font-weight: var(--font-weight-display);
@@ -312,7 +317,7 @@ table code {
   }
 
   table th {
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--surface-darker);
     position: sticky;
     top: 0;
     z-index: 10;
@@ -333,7 +338,7 @@ table code {
     }
 
     .mobile-card-item {
-      background: rgba(0, 0, 0, 0.3);
+      background: var(--surface-dark);
       border: 1px solid var(--border-color);
       border-radius: 6px;
       padding: 1rem;
@@ -375,7 +380,7 @@ table code {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--surface-dark);
   transition: 0.4s;
   border-radius: 24px;
   border: 1px solid var(--border-color);

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>NodeList is NOT an Array</h2>
+  <p>First paragraph</p>
+  <p>Second paragraph</p>
+  <p>Third paragraph</p>
+  <div id="demo"></div>
+
+  <script>
+    const myNodeList = document.querySelectorAll("p");
+    let result = "";
+    
+    result += "NodeList length: " + myNodeList.length + "<br>";
+    result += "NodeList[0]: " + myNodeList[0].innerHTML + "<br>";
+    result += "Is Array: " + Array.isArray(myNodeList) + "<br><br>";
+    
+    // Try array methods (these will fail)
+    try {
+      result += "Trying myNodeList.push(): ";
+      myNodeList.push();
+    } catch(e) {
+      result += "ERROR - " + e.message + "<br>";
+    }
+    
+    try {
+      result += "Trying myNodeList.pop(): ";
+      myNodeList.pop();
+    } catch(e) {
+      result += "ERROR - " + e.message + "<br>";
+    }
+    
+    // But forEach works in modern browsers
+    result += "<br>forEach method works:<br>";
+    try {
+      myNodeList.forEach((node, index) => {
+        result += "Item " + index + ": " + node.innerHTML + "<br>";
+      });
+    } catch(e) {
+      result += "forEach not supported in this browser<br>";
+    }
+    
+    result += "<br>NodeList is array-like but NOT an array!";
+    document.getElementById("demo").innerHTML = result;
+  </script>
+</body>
+</html>

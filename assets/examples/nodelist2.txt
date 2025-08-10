@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>NodeList Length Property</h2>
+  <p>Paragraph 1</p>
+  <p>Paragraph 2</p>
+  <p>Paragraph 3</p>
+  <p>Paragraph 4</p>
+  <div>This is a div</div>
+  <span>This is a span</span>
+  <p id="demo"></p>
+
+  <script>
+    const myNodeList = document.querySelectorAll("p");
+    const allElements = document.querySelectorAll("*");
+    
+    document.getElementById("demo").innerHTML = 
+      "NodeList of paragraphs: " + myNodeList.length + " elements<br>" +
+      "NodeList of all elements: " + allElements.length + " elements";
+  </script>
+</body>
+</html>

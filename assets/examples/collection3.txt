@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Looping Through HTMLCollection</h2>
+  <p>This paragraph will turn red.</p>
+  <p>This paragraph will turn red.</p>
+  <p>This paragraph will turn red.</p>
+  <p>This paragraph will turn red.</p>
+  <button onclick="changeColor()">Change Color</button>
+
+  <script>
+    function changeColor() {
+      const myCollection = document.getElementsByTagName("p");
+      for (let i = 0; i < myCollection.length; i++) {
+        myCollection[i].style.color = "red";
+        myCollection[i].style.fontWeight = "bold";
+      }
+    }
+  </script>
+</body>
+</html>

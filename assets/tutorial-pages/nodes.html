@@ -1,0 +1,418 @@
+<div class="section-explaination">
+  <h2 class="section-title">
+    <i class="fas fa-plus-circle"></i>
+    DOM <span class="highlight">Nodes</span>
+  </h2>
+
+  <p class="section-paragraph">
+    Adding and removing nodes (HTML elements) is fundamental to dynamic web
+    development. Learn how to create, insert, and manipulate DOM elements to
+    build interactive web applications.
+  </p>
+
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-tools"></i> Node Creation Methods
+      </h3>
+      <p>
+        The DOM provides several methods for creating and manipulating elements:
+      </p>
+      <ul class="feature-list">
+        <li>
+          <i class="fas fa-plus"></i> <code>createElement()</code> - Create new
+          elements
+        </li>
+        <li>
+          <i class="fas fa-font"></i> <code>createTextNode()</code> - Create
+          text content
+        </li>
+        <li>
+          <i class="fas fa-arrow-down"></i> <code>appendChild()</code> - Add as
+          last child
+        </li>
+        <li>
+          <i class="fas fa-level-down-alt"></i> <code>insertBefore()</code> -
+          Insert at specific position
+        </li>
+        <li>
+          <i class="fas fa-trash"></i> <code>remove()</code> - Remove elements
+        </li>
+        <li>
+          <i class="fas fa-exchange-alt"></i> <code>replaceChild()</code> -
+          Replace elements
+        </li>
+      </ul>
+    </div>
+
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-sitemap"></i> Node Manipulation Steps
+      </h3>
+      <p>Follow these steps to dynamically modify the DOM:</p>
+      <ul class="feature-list">
+        <li><i class="fas fa-step-forward"></i> Create the new element</li>
+        <li>
+          <i class="fas fa-edit"></i> Add content (text or other elements)
+        </li>
+        <li><i class="fas fa-search"></i> Find the target parent element</li>
+        <li><i class="fas fa-link"></i> Append or insert the new element</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-plus"></i> Creating New HTML Elements</span
+    >
+    <p>
+      This example demonstrates how to create a new paragraph element and append
+      it to an existing div. We'll create the element, add text content, and
+      then append it to the DOM.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="nodes1"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="nodes1"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="nodes1"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="nodes1"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-level-down-alt"></i> Using insertBefore() Method</span
+    >
+    <p>
+      The <code>insertBefore()</code> method allows you to insert a new element
+      at a specific position, rather than just appending it as the last child.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="nodes2"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="nodes2"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="nodes2"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="nodes2"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-trash"></i> Removing Elements with remove()</span
+    >
+    <p>
+      The <code>remove()</code> method is the modern way to remove an element
+      from the DOM. This method is simple and direct - just call it on the
+      element you want to remove.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="nodes3"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="nodes3"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="nodes3"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="nodes3"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-unlink"></i> Legacy removeChild() Method</span
+    >
+    <p>
+      For older browsers that don't support <code>remove()</code>, you can use
+      <code>removeChild()</code>. This method requires you to access the parent
+      element first.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="nodes4"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="nodes4"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="nodes4"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="nodes4"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-level-up-alt"></i> Using parentNode for Removal</span
+    >
+    <p>
+      A common workaround when using <code>removeChild()</code> is to use the
+      <code>parentNode</code> property. This allows you to remove an element
+      without first finding its parent.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="nodes5"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="nodes5"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="nodes5"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="nodes5"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-exchange-alt"></i> Replacing Elements with
+      replaceChild()</span
+    >
+    <p>
+      The <code>replaceChild()</code> method allows you to replace an existing
+      element with a new one. This is useful when you want to swap content while
+      maintaining the DOM structure.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="nodes6"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="nodes6"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="nodes6"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="nodes6"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-code"></i> Key Methods Summary
+      </h3>
+      <p>Essential DOM manipulation methods:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Purpose</th>
+            <th>Browser Support</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>createElement()</code></td>
+            <td>Create new element</td>
+            <td>All browsers</td>
+          </tr>
+          <tr>
+            <td><code>createTextNode()</code></td>
+            <td>Create text content</td>
+            <td>All browsers</td>
+          </tr>
+          <tr>
+            <td><code>appendChild()</code></td>
+            <td>Add as last child</td>
+            <td>All browsers</td>
+          </tr>
+          <tr>
+            <td><code>insertBefore()</code></td>
+            <td>Insert at position</td>
+            <td>All browsers</td>
+          </tr>
+          <tr>
+            <td><code>remove()</code></td>
+            <td>Remove element (modern)</td>
+            <td>IE Edge+, Modern browsers</td>
+          </tr>
+          <tr>
+            <td><code>removeChild()</code></td>
+            <td>Remove element (legacy)</td>
+            <td>All browsers</td>
+          </tr>
+          <tr>
+            <td><code>replaceChild()</code></td>
+            <td>Replace element</td>
+            <td>All browsers</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-lightbulb"></i> Best Practices
+      </h3>
+      <ul class="feature-list">
+        <li>
+          <i class="fas fa-check"></i> Use <code>remove()</code> for modern
+          browsers
+        </li>
+        <li>
+          <i class="fas fa-check"></i> Always check if elements exist before
+          manipulation
+        </li>
+        <li>
+          <i class="fas fa-check"></i> Use <code>DocumentFragment</code> for
+          multiple insertions
+        </li>
+        <li>
+          <i class="fas fa-check"></i> Consider performance with large DOM
+          changes
+        </li>
+        <li>
+          <i class="fas fa-check"></i> Use event delegation when adding many
+          elements
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

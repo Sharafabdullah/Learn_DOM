@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Looping Through NodeList</h2>
+  <p>This paragraph will turn red.</p>
+  <p>This paragraph will turn red.</p>
+  <p>This paragraph will turn red.</p>
+  <p>This paragraph will turn red.</p>
+  <button onclick="changeColor()">Change Color</button>
+
+  <script>
+    function changeColor() {
+      const myNodeList = document.querySelectorAll("p");
+      for (let i = 0; i < myNodeList.length; i++) {
+        myNodeList[i].style.color = "red";
+        myNodeList[i].style.fontWeight = "bold";
+      }
+    }
+  </script>
+</body>
+</html>

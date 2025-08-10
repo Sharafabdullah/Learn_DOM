@@ -17,7 +17,7 @@ button {
 
 button:hover {
   background-color: var(--glow-color);
-  color: #fff;
+  color: var(--white-color);
   transform: scale(1.04);
   box-shadow: 0 0 12px var(--glow-color);
 }
@@ -81,13 +81,82 @@ button:hover {
 
 /* Light theme styles */
 body[data-theme="light"] {
-  --bg-color: rgba(240, 248, 255, 1);
-  --primary-color: rgba(20, 30, 50, 0.95);
-  --secondary-color: rgba(60, 80, 120, 0.8);
-  --text-color: rgba(20, 30, 50, 0.95);
-  --card-bg: rgba(255, 255, 255, 0.9);
-  --glow-color: rgba(100, 150, 255, 0.2);
-  --border-color: rgba(100, 150, 255, 0.3);
+  --bg-color: rgba(248, 250, 252, 1); /* Softer, warmer background */
+  --primary-color: rgba(15, 25, 45, 1); /* Darker, more solid text */
+  --secondary-color: rgba(45, 65, 95, 0.9); /* Stronger secondary color */
+  --text-color: rgba(15, 25, 45, 1); /* Darker, more readable text */
+  --card-bg: rgba(
+    235,
+    245,
+    250,
+    0.98
+  ); /* Better header contrast - darker than background */
+  --glow-color: rgba(79, 125, 255, 0.25); /* More vibrant glow */
+  --border-color: rgba(79, 125, 255, 0.4); /* Stronger borders */
+
+  /* Additional light theme colors */
+  --error-color: #d32f2f;
+  --white-color: #000000; /* Inverted for light theme */
+  --black-color: #ffffff; /* Inverted for light theme */
+
+  /* Light background gradients */
+  --bg-gradient-1: #f0f4f8; /* Warmer, softer gradients */
+  --bg-gradient-2: #e2e8f0;
+  --bg-gradient-3: #f0f4f8;
+
+  /* Light surface colors with better contrast */
+  --surface-dark: rgba(225, 235, 245, 0.9); /* Darker surfaces for sections */
+  --surface-darker: rgba(215, 225, 240, 0.95); /* Even darker */
+  --surface-darkest: rgba(240, 245, 249, 1); /* Darker than pure white */
+  --surface-light: rgba(15, 25, 45, 0.08); /* More visible overlays */
+  --surface-lighter: rgba(15, 25, 45, 0.12);
+
+  /* Light interactive colors */
+  --accent-color: rgba(79, 125, 255, 0.25);
+  --accent-hover: rgba(79, 125, 255, 0.5);
+
+  /* Enhanced light DOM tree visualization colors */
+  --dom-document-fill: #dc2626; /* More vibrant red */
+  --dom-document-stroke: #b91c1c;
+  --dom-document-hover: #ef4444;
+  --dom-element-fill: #0891b2; /* Stronger cyan */
+  --dom-element-stroke: #0e7490;
+  --dom-element-hover: #06b6d4;
+  --dom-attribute-fill: #ca8a04; /* More distinct yellow */
+  --dom-attribute-stroke: #a16207;
+  --dom-attribute-hover: #eab308;
+  --dom-text-fill: #16a34a; /* Stronger green */
+  --dom-text-stroke: #15803d;
+  --dom-text-hover: #22c55e;
+
+  /* Light advanced DOM tree colors */
+  --dom-alt-document-fill: #e11d48; /* More vibrant alternatives */
+  --dom-alt-document-stroke: #be185d;
+  --dom-alt-element-fill: #0284c7;
+  --dom-alt-element-stroke: #0369a1;
+  --dom-alt-attribute-fill: #9333ea;
+  --dom-alt-attribute-stroke: #7c3aed;
+  --dom-alt-text-fill: #059669;
+  --dom-alt-text-stroke: #047857;
+
+  /* Light shadow and border effects */
+  --link-shadow: rgba(45, 65, 95, 0.4); /* Stronger shadows */
+  --node-shadow: rgba(15, 25, 45, 0.15);
+  --white-shadow: rgba(15, 25, 45, 0.3);
+  --text-shadow: rgba(248, 250, 252, 0.9);
+
+  /* Light gradient effects */
+  --gradient-primary: rgba(79, 125, 255, 0.2);
+  --gradient-secondary: rgba(248, 250, 252, 0.9);
+  --border-accent: rgba(15, 25, 45, 0.12);
+  --border-subtle: rgba(15, 25, 45, 0.08);
+
+  /* Light preview and browser simulation */
+  --preview-bg: #ffffff;
+  --preview-header-from: #f5f5f5;
+  --preview-header-to: #e0e0e0;
+  --preview-text: #424242;
+  --preview-border: #bdbdbd;
 }
 
 body[data-theme="light"] .dark-mode-toggle {
@@ -97,4 +166,102 @@ body[data-theme="light"] .dark-mode-toggle {
 
 body[data-theme="light"] .dark-mode-toggle i {
   color: var(--primary-color);
+}
+
+/* Light theme font weight adjustments for better readability */
+body[data-theme="light"] {
+  --font-weight-display: 800; /* Heavier display text */
+  --font-weight-nav: 600; /* Heavier navigation text */
+  --font-weight-body: 500; /* Heavier body text */
+}
+
+/* Enhanced light theme navigation - restore default nav link colors */
+body[data-theme="light"] nav a {
+  font-weight: var(--font-weight-nav);
+  color: var(
+    --primary-color
+  ); /* Use standard primary color for all nav links */
+}
+
+/* Hover effects for light theme navigation */
+body[data-theme="light"] nav a:hover {
+  background: var(--surface-light);
+  transform: translateX(8px);
+  box-shadow: 0 2px 8px var(--node-shadow);
+}
+
+/* Light theme section title enhancements */
+body[data-theme="light"] .section-title {
+  font-weight: var(--font-weight-display);
+  text-shadow: 0 1px 2px var(--node-shadow);
+}
+
+/* Light theme button improvements */
+body[data-theme="light"] button {
+  font-weight: var(--font-weight-nav);
+  border-width: 2px; /* Thicker borders for better visibility */
+}
+
+/* Light theme text improvements */
+body[data-theme="light"] .section-paragraph {
+  font-weight: var(--font-weight-body);
+  color: var(--text-color);
+}
+
+body[data-theme="light"] .section-subtitle {
+  font-weight: var(--font-weight-display);
+}
+
+/* Light theme card and surface improvements */
+body[data-theme="light"] .section-grid__item {
+  background: var(--surface-darker);
+  border: 2px solid var(--border-color);
+  box-shadow: 0 2px 4px var(--node-shadow);
+}
+
+body[data-theme="light"] .section-grid__item:hover {
+  box-shadow: 0 4px 12px var(--node-shadow), 0 0 0 2px var(--glow-color);
+  border-color: var(--primary-color);
+}
+
+/* Light theme code styling */
+body[data-theme="light"] code {
+  background: var(--surface-light);
+  border: 1px solid var(--border-subtle);
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+/* Light theme highlight improvements */
+body[data-theme="light"] .highlight {
+  background: linear-gradient(
+    135deg,
+    var(--gradient-primary),
+    var(--gradient-secondary)
+  );
+  color: var(--primary-color);
+  font-weight: var(--font-weight-nav);
+  border: 1px solid var(--border-accent);
+  text-shadow: none;
+}
+
+/* Keep JavaScript editor background consistent across themes */
+body[data-theme="light"] .jsEditor {
+  background: rgba(15, 25, 45, 1) !important; /* Dark editor background */
+}
+
+body[data-theme="light"] .jsEditor .CodeMirror {
+  background: rgba(15, 25, 45, 1) !important; /* Dark CodeMirror background */
+  color: rgba(
+    255,
+    255,
+    255,
+    0.95
+  ) !important; /* Light text on dark background */
+}
+
+/* Ensure editor container and related elements maintain dark theme */
+body[data-theme="light"] .jsEditor,
+body[data-theme="light"] .jsEditor * {
+  scrollbar-color: rgba(200, 210, 230, 0.3) transparent;
 }

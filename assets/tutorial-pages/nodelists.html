@@ -1,0 +1,411 @@
+<div class="section-explaination">
+  <h2 class="section-title">
+    <i class="fas fa-list-ul"></i>
+    DOM <span class="highlight">NodeList</span>
+  </h2>
+
+  <p class="section-paragraph">
+    A NodeList object is a list (collection) of nodes extracted from a document.
+    Understanding the differences between NodeList and HTMLCollection is crucial
+    for effective DOM manipulation.
+  </p>
+
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-info-circle"></i> NodeList Characteristics
+      </h3>
+      <p>NodeList objects have several important features:</p>
+      <ul class="feature-list">
+        <li>
+          <i class="fas fa-list-ol"></i> Array-like access with index numbers
+        </li>
+        <li>
+          <i class="fas fa-ruler"></i> <code>length</code> property for counting
+          nodes
+        </li>
+        <li>
+          <i class="fas fa-search"></i> Access nodes by index:
+          <code>nodeList[0]</code>
+        </li>
+        <li><i class="fas fa-loop"></i> Can be iterated with for loops</li>
+        <li>
+          <i class="fas fa-file-alt"></i> Contains all types of nodes (element,
+          text, comment)
+        </li>
+      </ul>
+    </div>
+
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-code-branch"></i> Static vs Live NodeLists
+      </h3>
+      <p>NodeLists can be either static or live:</p>
+      <ul class="feature-list">
+        <li>
+          <i class="fas fa-camera"></i> <code>querySelectorAll()</code> - Static
+          NodeList
+        </li>
+        <li>
+          <i class="fas fa-sync"></i> <code>childNodes</code> - Live NodeList
+        </li>
+        <li><i class="fas fa-clock"></i> Static = snapshot at creation time</li>
+        <li>
+          <i class="fas fa-heartbeat"></i> Live = updates with DOM changes
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-search"></i> Getting NodeList with
+      querySelectorAll()</span
+    >
+    <p>
+      This example demonstrates how <code>querySelectorAll()</code> returns a
+      static NodeList object and how to access individual nodes using index
+      numbers.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="nodelist1"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="nodelist1"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="nodelist1"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="nodelist1"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-ruler"></i> NodeList Length Property</span
+    >
+    <p>
+      The <code>length</code> property tells you how many nodes are in the
+      NodeList. This is essential for safe iteration through the collection.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="nodelist2"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="nodelist2"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="nodelist2"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="nodelist2"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-loop"></i> Looping Through NodeList</span
+    >
+    <p>
+      This example shows how to loop through a NodeList to modify all matching
+      elements. We'll change the color of all paragraphs using a for loop.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="nodelist3"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="nodelist3"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="nodelist3"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="nodelist3"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-camera"></i> Static NodeList vs Live NodeList</span
+    >
+    <p>
+      This example demonstrates the difference between static NodeLists (from
+      <code>querySelectorAll()</code>) and live NodeLists (from
+      <code>childNodes</code>).
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="nodelist4"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="nodelist4"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="nodelist4"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="nodelist4"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-sitemap"></i> childNodes Live NodeList</span
+    >
+    <p>
+      The <code>childNodes</code> property returns a live NodeList that includes
+      all types of nodes: element nodes, text nodes (including whitespace), and
+      comment nodes.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="nodelist5"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="nodelist5"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="nodelist5"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="nodelist5"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-times-circle"></i> NodeList is NOT an Array</span
+    >
+    <p>
+      This example demonstrates that NodeList is not a true array and doesn't
+      have array methods like <code>push()</code>, <code>pop()</code>, or
+      <code>join()</code>.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="nodelist6"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="nodelist6"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="nodelist6"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="nodelist6"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-balance-scale"></i> NodeList vs HTMLCollection
+      </h3>
+      <p>Key differences between NodeList and HTMLCollection:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>NodeList</th>
+            <th>HTMLCollection</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Content</strong></td>
+            <td>All node types</td>
+            <td>Element nodes only</td>
+          </tr>
+          <tr>
+            <td><strong>Access Methods</strong></td>
+            <td>Index only</td>
+            <td>Index, name, id</td>
+          </tr>
+          <tr>
+            <td><strong>querySelectorAll()</strong></td>
+            <td>Static NodeList</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td><strong>getElementsByTagName()</strong></td>
+            <td>N/A</td>
+            <td>Live HTMLCollection</td>
+          </tr>
+          <tr>
+            <td><strong>childNodes</strong></td>
+            <td>Live NodeList</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td><strong>children</strong></td>
+            <td>N/A</td>
+            <td>Live HTMLCollection</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-lightbulb"></i> Best Practices
+      </h3>
+      <ul class="feature-list">
+        <li>
+          <i class="fas fa-check"></i> Use <code>querySelectorAll()</code> for
+          static selections
+        </li>
+        <li>
+          <i class="fas fa-check"></i> Be aware of live vs static behavior
+        </li>
+        <li>
+          <i class="fas fa-check"></i> Consider <code>children</code> instead of
+          <code>childNodes</code> for elements only
+        </li>
+        <li>
+          <i class="fas fa-check"></i> Convert to array with
+          <code>Array.from()</code> for array methods
+        </li>
+        <li>
+          <i class="fas fa-check"></i> Use <code>forEach()</code> method
+          available on NodeList (modern browsers)
+        </li>
+        <li>
+          <i class="fas fa-check"></i> Cache length in loops for better
+          performance
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

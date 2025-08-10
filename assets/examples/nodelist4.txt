@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Static vs Live NodeList</h2>
+  <div id="container">
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+  </div>
+  <button onclick="addParagraph()">Add Paragraph</button>
+  <div id="demo"></div>
+
+  <script>
+    // Static NodeList from querySelectorAll
+    const staticNodeList = document.querySelectorAll("p");
+    // Live NodeList from childNodes
+    const liveNodeList = document.getElementById("container").childNodes;
+    
+    function updateDisplay() {
+      document.getElementById("demo").innerHTML = 
+        "Static NodeList (querySelectorAll): " + staticNodeList.length + " paragraphs<br>" +
+        "Live NodeList (childNodes): " + liveNodeList.length + " nodes<br>" +
+        "<small>Note: childNodes includes text nodes (whitespace)</small>";
+    }
+    
+    function addParagraph() {
+      const newP = document.createElement("p");
+      newP.innerHTML = "New paragraph " + (staticNodeList.length + 1);
+      document.getElementById("container").appendChild(newP);
+      updateDisplay();
+    }
+    
+    // Initial display
+    updateDisplay();
+  </script>
+</body>
+</html>

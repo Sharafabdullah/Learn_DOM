@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>childNodes Live NodeList</h2>
+  <div id="container">
+    <p>Paragraph</p>
+    <span>Span element</span>
+    <!-- This is a comment -->
+  </div>
+  <button onclick="analyzeNodes()">Analyze Child Nodes</button>
+  <div id="demo"></div>
+
+  <script>
+    function analyzeNodes() {
+      const container = document.getElementById("container");
+      const childNodesList = container.childNodes;
+      let result = "Total child nodes: " + childNodesList.length + "<br><br>";
+      
+      for (let i = 0; i < childNodesList.length; i++) {
+        const node = childNodesList[i];
+        result += "Node " + i + ": ";
+        result += "Type=" + node.nodeType + ", ";
+        result += "Name=" + node.nodeName + ", ";
+        if (node.nodeType === 1) { // Element node
+          result += "Content=" + node.innerHTML;
+        } else if (node.nodeType === 3) { // Text node
+          result += "Text='" + node.nodeValue.trim() + "'";
+        } else if (node.nodeType === 8) { // Comment node
+          result += "Comment='" + node.nodeValue + "'";
+        }
+        result += "<br>";
+      }
+      
+      document.getElementById("demo").innerHTML = result;
+    }
+    
+    // Auto-run on page load
+    analyzeNodes();
+  </script>
+</body>
+</html>

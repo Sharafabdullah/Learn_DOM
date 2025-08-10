@@ -10,6 +10,70 @@
   --glow-color: rgba(179, 125, 255, 0.18);
   --border-color: rgba(0, 255, 210, 0.1);
 
+  /* Additional theme colors */
+  --error-color: #ff6b6b;
+  --white-color: #ffffff;
+  --black-color: #000000;
+
+  /* Background gradients */
+  --bg-gradient-1: #1a1a2e;
+  --bg-gradient-2: #16213e;
+  --bg-gradient-3: #1a1a2e;
+
+  /* Surface colors with transparency */
+  --surface-dark: rgba(0, 0, 0, 0.3);
+  --surface-darker: rgba(0, 0, 0, 0.5);
+  --surface-darkest: rgba(0, 0, 0, 1);
+  --surface-light: rgba(0, 0, 0, 0.1);
+  --surface-lighter: rgba(0, 0, 0, 0.2);
+
+  /* Interactive colors */
+  --accent-color: rgba(0, 255, 210, 0.1);
+  --accent-hover: rgba(0, 255, 210, 0.5);
+
+  /* DOM tree visualization colors */
+  --dom-document-fill: #ff6b6b;
+  --dom-document-stroke: #ff5252;
+  --dom-document-hover: #ff8a80;
+  --dom-element-fill: #4ecdc4;
+  --dom-element-stroke: #26a69a;
+  --dom-element-hover: #64ffda;
+  --dom-attribute-fill: #ffe66d;
+  --dom-attribute-stroke: #ffd54f;
+  --dom-attribute-hover: #ffeb3b;
+  --dom-text-fill: #a8e6cf;
+  --dom-text-stroke: #81c784;
+  --dom-text-hover: #c8e6c9;
+
+  /* Advanced DOM tree colors (alternative theme) */
+  --dom-alt-document-fill: #ff4d6d;
+  --dom-alt-document-stroke: #ffccd5;
+  --dom-alt-element-fill: #4cc9f0;
+  --dom-alt-element-stroke: #90e0ef;
+  --dom-alt-attribute-fill: #f72585;
+  --dom-alt-attribute-stroke: #ff8fab;
+  --dom-alt-text-fill: #7209b7;
+  --dom-alt-text-stroke: #b5179e;
+
+  /* Shadow and border effects */
+  --link-shadow: rgba(200, 210, 230, 0.5);
+  --node-shadow: rgba(0, 0, 0, 0.3);
+  --white-shadow: rgba(255, 255, 255, 0.6);
+  --text-shadow: rgba(0, 0, 0, 0.8);
+
+  /* Gradient effects */
+  --gradient-primary: rgba(179, 125, 255, 0.22);
+  --gradient-secondary: rgba(26, 26, 46, 0.32);
+  --border-accent: rgba(255, 255, 255, 0.12);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+
+  /* Preview and browser simulation */
+  --preview-bg: #ffffff;
+  --preview-header-from: #f0f0f0;
+  --preview-header-to: #d0d0d0;
+  --preview-text: #333;
+  --preview-border: #ccc;
+
   --font-display: "Orbitron", sans-serif;
   --font-body: "Rajdhani", sans-serif;
   --font-code: "JetBrains Mono", monospace;

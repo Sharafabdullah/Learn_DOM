@@ -1,0 +1,398 @@
+<div class="section-explaination">
+  <h2 class="section-title">
+    <i class="fas fa-list"></i>
+    HTML<span class="highlight">Collection</span>
+  </h2>
+
+  <p class="section-paragraph">
+    The HTMLCollection object is an array-like list of HTML elements returned by
+    methods like getElementsByTagName(). Understanding how to work with
+    HTMLCollections is essential for manipulating multiple DOM elements
+    efficiently.
+  </p>
+
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-database"></i> HTMLCollection Properties
+      </h3>
+      <p>HTMLCollection objects provide several key features:</p>
+      <ul class="feature-list">
+        <li>
+          <i class="fas fa-list-ol"></i> Array-like access with index numbers
+        </li>
+        <li>
+          <i class="fas fa-ruler"></i> <code>length</code> property for counting
+          elements
+        </li>
+        <li>
+          <i class="fas fa-sync"></i> Live collection - updates automatically
+        </li>
+        <li>
+          <i class="fas fa-search"></i> Access elements by index:
+          <code>collection[0]</code>
+        </li>
+        <li><i class="fas fa-loop"></i> Can be iterated with for loops</li>
+      </ul>
+    </div>
+
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-exclamation-triangle"></i> Important Differences
+      </h3>
+      <p>HTMLCollection vs Array - key distinctions:</p>
+      <ul class="feature-list">
+        <li><i class="fas fa-times"></i> NOT a true JavaScript array</li>
+        <li><i class="fas fa-times"></i> No array methods (push, pop, join)</li>
+        <li>
+          <i class="fas fa-check"></i> Index access works:
+          <code>collection[0]</code>
+        </li>
+        <li><i class="fas fa-check"></i> Has length property</li>
+        <li><i class="fas fa-check"></i> Can use for loops</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-search"></i> Getting HTMLCollection with
+      getElementsByTagName()</span
+    >
+    <p>
+      This example demonstrates how <code>getElementsByTagName()</code> returns
+      an HTMLCollection object and how to access individual elements using index
+      numbers.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="collection1"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="collection1"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="collection1"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="collection1"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-ruler"></i> Using the length Property</span
+    >
+    <p>
+      The <code>length</code> property tells you how many elements are in the
+      HTMLCollection. This is essential for looping through collections safely.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="collection2"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="collection2"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="collection2"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="collection2"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-loop"></i> Looping Through HTMLCollection</span
+    >
+    <p>
+      This example shows how to loop through an HTMLCollection to change the
+      style of all matching elements. We'll change the text color of all
+      paragraph elements.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="collection3"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="collection3"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="collection3"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="collection3"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-times-circle"></i> HTMLCollection vs Array -
+      Limitations</span
+    >
+    <p>
+      This example demonstrates that HTMLCollection is not a true array and
+      doesn't have array methods like <code>push()</code>, <code>pop()</code>,
+      or <code>join()</code>.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="collection4"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="collection4"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="collection4"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="collection4"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-sync-alt"></i> Live HTMLCollection Updates</span
+    >
+    <p>
+      HTMLCollections are "live" - they automatically update when the DOM
+      changes. This example shows how the collection updates when elements are
+      added or removed.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="collection5"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="collection5"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="collection5"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="collection5"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-exchange-alt"></i> Converting HTMLCollection to
+      Array</span
+    >
+    <p>
+      Sometimes you need array methods. This example shows how to convert an
+      HTMLCollection to a real array using <code>Array.from()</code> or the
+      spread operator.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="collection6"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="collection6"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="collection6"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="collection6"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-code"></i> HTMLCollection Methods & Properties
+      </h3>
+      <p>Available properties and methods:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Property/Method</th>
+            <th>Description</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>length</code></td>
+            <td>Number of elements</td>
+            <td><code>collection.length</code></td>
+          </tr>
+          <tr>
+            <td><code>[index]</code></td>
+            <td>Access by index</td>
+            <td><code>collection[0]</code></td>
+          </tr>
+          <tr>
+            <td><code>item(index)</code></td>
+            <td>Access by index (method)</td>
+            <td><code>collection.item(0)</code></td>
+          </tr>
+          <tr>
+            <td><code>namedItem(name)</code></td>
+            <td>Access by name/id</td>
+            <td><code>collection.namedItem("myId")</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-lightbulb"></i> Best Practices
+      </h3>
+      <ul class="feature-list">
+        <li>
+          <i class="fas fa-check"></i> Always check length before accessing
+          elements
+        </li>
+        <li><i class="fas fa-check"></i> Use for loops for simple iteration</li>
+        <li>
+          <i class="fas fa-check"></i> Convert to array for complex operations
+        </li>
+        <li>
+          <i class="fas fa-check"></i> Remember collections are live and update
+          automatically
+        </li>
+        <li>
+          <i class="fas fa-check"></i> Cache length in loops for better
+          performance
+        </li>
+        <li>
+          <i class="fas fa-check"></i> Use modern methods like
+          <code>querySelectorAll()</code> for static collections
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

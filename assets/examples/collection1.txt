@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>HTMLCollection Object</h2>
+  <p>This is paragraph 1.</p>
+  <p>This is paragraph 2.</p>
+  <p>This is paragraph 3.</p>
+  <p id="demo"></p>
+
+  <script>
+    const myCollection = document.getElementsByTagName("p");
+    document.getElementById("demo").innerHTML = 
+      "The second paragraph says: " + myCollection[1].innerHTML;
+  </script>
+</body>
+</html>

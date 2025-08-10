@@ -1,0 +1,513 @@
+<div class="section-explaination">
+  <h2 class="section-title">
+    <i class="fas fa-route"></i>
+    DOM <span class="highlight">Navigation</span>
+  </h2>
+
+  <p class="section-paragraph">
+    With the HTML DOM, you can navigate the node tree using node relationships.
+    Understanding how to traverse and navigate between DOM nodes is essential
+    for dynamic web development.
+  </p>
+
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-project-diagram"></i> DOM Nodes
+      </h3>
+      <p>
+        According to the W3C HTML DOM standard, everything in an HTML document
+        is a node:
+      </p>
+      <ul class="feature-list">
+        <li>
+          <i class="fas fa-file-alt"></i> The entire document is a document node
+        </li>
+        <li>
+          <i class="fas fa-tags"></i> Every HTML element is an element node
+        </li>
+        <li>
+          <i class="fas fa-font"></i> The text inside HTML elements are text
+          nodes
+        </li>
+        <li>
+          <i class="fas fa-at"></i> Every HTML attribute is an attribute node
+          (deprecated)
+        </li>
+        <li><i class="fas fa-comment"></i> All comments are comment nodes</li>
+      </ul>
+    </div>
+
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-family"></i> Node Relationships
+      </h3>
+      <p>
+        The nodes in the node tree have a hierarchical relationship to each
+        other. The terms parent, child, and sibling are used to describe the
+        relationships.
+      </p>
+      <ul class="feature-list">
+        <li><i class="fas fa-crown"></i> The top node is called the root</li>
+        <li>
+          <i class="fas fa-arrow-up"></i> Every node has exactly one parent
+          (except root)
+        </li>
+        <li>
+          <i class="fas fa-arrow-down"></i> A node can have multiple children
+        </li>
+        <li>
+          <i class="fas fa-arrows-alt-h"></i> Siblings are nodes with the same
+          parent
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-sitemap"></i> Basic HTML Structure</span
+    >
+    <p>
+      This example shows a basic HTML document structure that we'll use to
+      understand DOM navigation. Each part of this document becomes a node in
+      the DOM tree.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="navigation1"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="navigation1"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="navigation1"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="navigation1"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-code"></i> Accessing Text with innerHTML</span
+    >
+    <p>
+      The <code>innerHTML</code> property is the most common way to access or
+      modify the content of an element. This example demonstrates copying
+      content from one element to another.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="navigation2"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="navigation2"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="navigation2"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="navigation2"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-text-width"></i> Accessing Text with
+      firstChild.nodeValue</span
+    >
+    <p>
+      Text content in HTML elements is actually stored in text nodes. This
+      example shows how to access the text using
+      <code>firstChild.nodeValue</code>.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="navigation3"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="navigation3"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="navigation3"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="navigation3"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-list-ol"></i> Accessing Text with
+      childNodes[0].nodeValue</span
+    >
+    <p>
+      Another way to access text content is through the
+      <code>childNodes</code> array. This example shows accessing the first
+      child node's value.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="navigation4"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="navigation4"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="navigation4"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="navigation4"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-body"></i> DOM Root Access - document.body</span
+    >
+    <p>
+      The <code>document.body</code> property provides access to the body
+      element and all its content. This example displays the entire body
+      content.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="navigation5"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="navigation5"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="navigation5"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="navigation5"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-file-code"></i> DOM Root Access -
+      document.documentElement</span
+    >
+    <p>
+      The <code>document.documentElement</code> property provides access to the
+      entire HTML document, including both head and body sections.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="navigation6"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="navigation6"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="navigation6"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="navigation6"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-tag"></i> Node Properties - nodeName</span
+    >
+    <p>
+      The <code>nodeName</code> property returns the name of a node. For element
+      nodes, it returns the tag name in uppercase.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="navigation7"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="navigation7"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="navigation7"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="navigation7"></div>
+  </div>
+</div>
+
+<div class="section-example">
+  <div class="section-explaination">
+    <span class="section-subtitle"
+      ><i class="fas fa-hashtag"></i> Node Properties - nodeType</span
+    >
+    <p>
+      The <code>nodeType</code> property returns a number representing the type
+      of node. Element nodes return 1, text nodes return 3, document nodes
+      return 9.
+    </p>
+  </div>
+
+  <div class="code-playground">
+    <div class="editor-sandbox-container">
+      <div class="editor-container">
+        <div class="jsEditor" data-editor-id="navigation8"></div>
+        <div class="tree-toggle-container">
+          <label class="tree-toggle">
+            <input
+              type="checkbox"
+              class="tree-toggle-input"
+              data-editor-id="navigation8"
+              checked
+            />
+            <span class="tree-toggle-slider"></span>
+          </label>
+          <span class="tree-toggle-label">Show DOM Tree</span>
+          <button class="run-button">
+            <i class="fas fa-play"></i> Run Code
+          </button>
+        </div>
+      </div>
+
+      <div class="visualization-container">
+        <div class="sandbox-content">
+          <h3>Preview</h3>
+          <div class="previewArea" data-editor-id="navigation8"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="domTree" data-editor-id="navigation8"></div>
+  </div>
+</div>
+
+<div class="section-explaination">
+  <div class="section-grid">
+    <div class="section-grid__item">
+      <h3 class="section-subtitle">
+        <i class="fas fa-compass"></i> Navigation Properties
+      </h3>
+      <p>
+        You can use the following node properties to navigate between nodes with
+        JavaScript:
+      </p>
+      <ul class="feature-list">
+        <li>
+          <i class="fas fa-level-up-alt"></i> <code>parentNode</code> - Access
+          parent element
+        </li>
+        <li>
+          <i class="fas fa-list-ol"></i> <code>childNodes[number]</code> -
+          Access child by index
+        </li>
+        <li>
+          <i class="fas fa-step-forward"></i> <code>firstChild</code> - First
+          child node
+        </li>
+        <li>
+          <i class="fas fa-step-backward"></i> <code>lastChild</code> - Last
+          child node
+        </li>
+        <li>
+          <i class="fas fa-arrow-right"></i> <code>nextSibling</code> - Next
+          sibling node
+        </li>
+        <li>
+          <i class="fas fa-arrow-left"></i> <code>previousSibling</code> -
+          Previous sibling node
+        </li>
+      </ul>
+    </div>
+
+    <div class="section-grid__item">
+      <h3 class="section-subtitle"><i class="fas fa-list"></i> Node Types</h3>
+      <p>The most important nodeType properties are:</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Node</th>
+            <th>Type</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>ELEMENT_NODE</td>
+            <td>1</td>
+            <td><code>&lt;h1&gt;Title&lt;/h1&gt;</code></td>
+          </tr>
+          <tr>
+            <td>ATTRIBUTE_NODE</td>
+            <td>2</td>
+            <td><code>class="heading"</code> (deprecated)</td>
+          </tr>
+          <tr>
+            <td>TEXT_NODE</td>
+            <td>3</td>
+            <td>Text content</td>
+          </tr>
+          <tr>
+            <td>COMMENT_NODE</td>
+            <td>8</td>
+            <td><code>&lt;!-- comment --&gt;</code></td>
+          </tr>
+          <tr>
+            <td>DOCUMENT_NODE</td>
+            <td>9</td>
+            <td>The HTML document itself</td>
+          </tr>
+          <tr>
+            <td>DOCUMENT_TYPE_NODE</td>
+            <td>10</td>
+            <td><code>&lt;!DOCTYPE html&gt;</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

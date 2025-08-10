@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>HTMLCollection Length Property</h2>
+  <p>Paragraph 1</p>
+  <p>Paragraph 2</p>
+  <p>Paragraph 3</p>
+  <p>Paragraph 4</p>
+  <p id="demo"></p>
+
+  <script>
+    const myCollection = document.getElementsByTagName("p");
+    document.getElementById("demo").innerHTML = 
+      "This document contains " + myCollection.length + " paragraph elements.";
+  </script>
+</body>
+</html>

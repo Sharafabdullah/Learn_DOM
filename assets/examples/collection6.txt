@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h2>Converting HTMLCollection to Array</h2>
+  <p>Paragraph 1</p>
+  <p>Paragraph 2</p>
+  <p>Paragraph 3</p>
+  <div id="demo"></div>
+
+  <script>
+    const myCollection = document.getElementsByTagName("p");
+    let result = "";
+    
+    result += "Original HTMLCollection length: " + myCollection.length + "<br><br>";
+    
+    // Convert to array using Array.from()
+    const myArray1 = Array.from(myCollection);
+    result += "Array.from() conversion: " + Array.isArray(myArray1) + "<br>";
+    result += "Array methods work: " + myArray1.map(p => p.innerHTML).join(", ") + "<br><br>";
+    
+    // Convert to array using spread operator
+    const myArray2 = [...myCollection];
+    result += "Spread operator conversion: " + Array.isArray(myArray2) + "<br>";
+    result += "Array methods work: " + myArray2.filter(p => p.innerHTML.includes("2")).length + " elements contain '2'<br><br>";
+    
+    // Show that original collection is still live
+    const newP = document.createElement("p");
+    newP.innerHTML = "New paragraph";
+    document.body.appendChild(newP);
+    
+    result += "After adding element:<br>";
+    result += "HTMLCollection length: " + myCollection.length + "<br>";
+    result += "Array length: " + myArray1.length + " (static)";
+    
+    document.getElementById("demo").innerHTML = result;
+  </script>
+</body>
+</html>

@@ -75,6 +75,27 @@ class TutorialManager {
       this.tutorialContent.innerHTML = content;
       this.currentTutorial = tutorialId;
 
+      // Execute scripts in loaded content for quiz functionality
+      const scripts = this.tutorialContent.querySelectorAll("script");
+      scripts.forEach(script => {
+        try {
+          if (script.textContent.trim()) {
+            // Create and execute script content in global scope
+            const func = new Function(script.textContent);
+            func();
+          }
+        } catch (error) {
+          console.error("Error executing script:", error);
+        }
+      });
+
+      // Special handling for quiz page
+      if (tutorialId === "quiz") {
+        setTimeout(() => {
+          this.setupQuizEventListeners();
+        }, 100);
+      }
+
       // Update mobile section title
       this.updateMobileSectionTitle(tutorialId);
 
@@ -125,11 +146,57 @@ class TutorialManager {
         nodes: "Nodes",
         collections: "Collections",
         nodelists: "NodeLists",
+        quiz: "Quiz",
       };
 
       mobileTitleElement.textContent =
         titleMap[tutorialId] ||
         tutorialId.charAt(0).toUpperCase() + tutorialId.slice(1);
+    }
+  }
+
+  setupQuizEventListeners() {
+    const yesBtn = document.getElementById("yes-btn");
+    const noBtn = document.getElementById("no-btn");
+    const retryBtn = document.getElementById("retry-btn");
+
+    console.log("Setting up quiz event listeners:", {
+      yesBtn,
+      noBtn,
+      retryBtn,
+    });
+
+    if (yesBtn) {
+      yesBtn.addEventListener("click", () => {
+        console.log("Yes button clicked");
+        if (typeof window.answerYes === "function") {
+          window.answerYes();
+        } else {
+          console.error("answerYes function not found");
+        }
+      });
+    }
+
+    if (noBtn) {
+      noBtn.addEventListener("click", () => {
+        console.log("No button clicked");
+        if (typeof window.answerNo === "function") {
+          window.answerNo();
+        } else {
+          console.error("answerNo function not found");
+        }
+      });
+    }
+
+    if (retryBtn) {
+      retryBtn.addEventListener("click", () => {
+        console.log("Retry button clicked");
+        if (typeof window.retryQuiz === "function") {
+          window.retryQuiz();
+        } else {
+          console.error("retryQuiz function not found");
+        }
+      });
     }
   }
 

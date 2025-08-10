@@ -1,0 +1,9 @@
+<div id="div1">
+  <p id="p1">This is a paragraph.</p>
+  <p id="p2">This is another paragraph.</p>
+</div>
+
+<script>
+const child = document.getElementById("p1");
+child.parentNode.removeChild(child);
+</script>

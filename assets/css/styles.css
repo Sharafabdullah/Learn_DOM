@@ -69,7 +69,7 @@ html {
 .error-state i {
   font-size: 3rem;
   margin-bottom: 1rem;
-  color: var(--error-color, #ff6b6b);
+  color: var(--error-color);
 }
 
 /* Mobile loading state adjustments */
