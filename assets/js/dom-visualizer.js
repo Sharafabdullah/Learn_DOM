@@ -364,7 +364,9 @@ export class DOMVisualizer {
     const nodeDepths = new Map();
     const calculateDepth = (nodeId, depth = 0) => {
       if (nodeDepths.has(nodeId)) return;
-      nodeDepths.set(nodeId, depth);
+      // Limit depth to 5 levels
+      const limitedDepth = Math.min(depth, 5);
+      nodeDepths.set(nodeId, limitedDepth);
 
       graphData.links
         .filter(
@@ -382,10 +384,12 @@ export class DOMVisualizer {
     // Start from document node (should be id: 0)
     calculateDepth(0);
 
-    // Assign target y positions based on depth
+    // Assign target y positions based on depth with better spacing
     graphData.nodes.forEach(node => {
       const depth = nodeDepths.get(node.id) || 0;
-      node.targetY = 60 + depth * 80; // 60px from top, 80px between levels
+      // Start from the top (30px) with better spacing between levels
+      node.targetY = 30 + depth * 70; // 30px from top, 70px between levels
+      node.depth = depth; // Store depth for later use
     });
 
     // Inline createSVGContainer
@@ -396,7 +400,7 @@ export class DOMVisualizer {
       .attr("height", height)
       .attr("viewBox", [0, 0, width, height]);
 
-    // Inline createForceSimulation with tree-like positioning
+    // Inline createForceSimulation with improved tree-like positioning
     const simulation = d3
       .forceSimulation(graphData.nodes)
       .force(
@@ -404,31 +408,50 @@ export class DOMVisualizer {
         d3
           .forceLink(graphData.links)
           .id(d => d.id)
-          .distance(60) // Shorter, more consistent distance
-          .strength(0.8)
+          .distance(50) // Slightly shorter distance for better tree structure
+          .strength(0.9) // Stronger link force
       )
       .force(
         "charge",
-        d3.forceManyBody().strength(-300) // Reduced repulsion for tighter tree
+        d3.forceManyBody().strength(d => {
+          // Variable repulsion based on depth - less repulsion for deeper nodes
+          const baseStrength = -200;
+          const depthFactor = Math.max(0.3, 1 - (d.depth || 0) * 0.15);
+          return baseStrength * depthFactor;
+        })
       )
-      .force("center", d3.forceCenter(width / 2, height / 2))
       .force(
         "y",
         d3
           .forceY()
           .y(d => d.targetY || height / 2)
-          .strength(0.3) // Strong y-positioning to maintain layers
+          .strength(d => {
+            // Stronger Y positioning for root and shallow nodes, weaker for deep nodes
+            return d.depth <= 2 ? 0.8 : 0.4;
+          })
       )
       .force(
         "x",
         d3
           .forceX()
-          .x(width / 2)
-          .strength(0.05) // Weak x-centering to allow spreading
+          .x(d => {
+            // For nodes at bottom (depth 4-5), allow more horizontal freedom
+            if (d.depth >= 4) {
+              return width * 0.3 + Math.random() * width * 0.4; // Random horizontal position
+            }
+            return width / 2; // Center for upper levels
+          })
+          .strength(d => {
+            // Weaker x-centering for deeper nodes to allow horizontal spreading
+            return d.depth >= 4 ? 0.02 : 0.1;
+          })
       )
       .force(
         "collision",
-        d3.forceCollide().radius(25) // Prevent node overlap
+        d3.forceCollide().radius(d => {
+          // Smaller collision radius for deeper nodes to pack them better
+          return d.depth >= 4 ? 20 : 25;
+        })
       );
 
     this.app.simulations.set(editorId, simulation);

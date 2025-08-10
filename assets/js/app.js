@@ -75,6 +75,12 @@ class TutorialManager {
       this.tutorialContent.innerHTML = content;
       this.currentTutorial = tutorialId;
 
+      // Update mobile section title
+      this.updateMobileSectionTitle(tutorialId);
+
+      // Scroll to top of page
+      window.scrollTo({ top: 0, behavior: "smooth" });
+
       // Initialize editors for this tutorial only
 
       this.cleanupPreviousTutorial();
@@ -97,6 +103,33 @@ class TutorialManager {
           </button>
         </div>
       `;
+    }
+  }
+
+  updateMobileSectionTitle(tutorialId) {
+    const mobileTitleElement = document.getElementById("mobileSectionTitle");
+    if (mobileTitleElement) {
+      // Create a map of tutorial IDs to display names
+      const titleMap = {
+        introduction: "Introduction",
+        methods: "Methods",
+        document: "Document",
+        elements: "Elements",
+        "changing-html": "Changing HTML",
+        Forms: "Forms",
+        css: "CSS",
+        animations: "Animations",
+        events: "Events",
+        listeners: "Listeners",
+        navigation: "Navigation",
+        nodes: "Nodes",
+        collections: "Collections",
+        nodelists: "NodeLists",
+      };
+
+      mobileTitleElement.textContent =
+        titleMap[tutorialId] ||
+        tutorialId.charAt(0).toUpperCase() + tutorialId.slice(1);
     }
   }
 
@@ -195,12 +228,41 @@ class DOMTutorialApp {
 
     if (headerToggle && header) {
       headerToggle.addEventListener("click", () => {
-        header.classList.toggle("collapsed");
-        const mainElement = document.querySelector("main");
-        if (mainElement) {
-          mainElement.style.marginLeft = header.classList.contains("collapsed")
-            ? "80px"
-            : "280px";
+        // Check if we're on mobile
+        const isMobile = window.innerWidth <= 768;
+
+        if (isMobile) {
+          // Mobile: toggle mobile menu
+          header.classList.toggle("mobile-open");
+        } else {
+          // Desktop: toggle collapsed state
+          header.classList.toggle("collapsed");
+          const mainElement = document.querySelector("main");
+          if (mainElement) {
+            mainElement.style.marginLeft = header.classList.contains(
+              "collapsed"
+            )
+              ? "80px"
+              : "280px";
+          }
+        }
+      });
+
+      // Close mobile menu when clicking nav links
+      const navLinks = document.querySelectorAll("nav a");
+      navLinks.forEach(link => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 768) {
+            header.classList.remove("mobile-open");
+          }
+        });
+      });
+
+      // Handle window resize
+      window.addEventListener("resize", () => {
+        const isMobile = window.innerWidth <= 768;
+        if (!isMobile) {
+          header.classList.remove("mobile-open");
         }
       });
     }
@@ -284,6 +346,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       // Update active nav item
       navLinks.forEach(l => l.classList.remove("active"));
       link.classList.add("active");
+
+      // Close mobile navigation menu if open
+      const header = document.querySelector("header");
+      if (header && header.classList.contains("mobile-open")) {
+        header.classList.remove("mobile-open");
+      }
 
       // Load the tutorial
       await app.tutorialManager.loadTutorial(tutorialId);

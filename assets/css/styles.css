@@ -5,6 +5,47 @@
 @import url("./layout.css");
 @import url("./components.css");
 
+/* Mobile-first responsive design */
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure text is readable on mobile */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Improve touch interactions */
+@media (max-width: 768px) {
+  /* Prevent zoom on double tap */
+  * {
+    touch-action: manipulation;
+    box-sizing: border-box;
+  }
+
+  /* Prevent horizontal overflow */
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Larger touch targets */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Improve scroll performance */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 /* SPA Loading States */
 .loading-state,
 .error-state {
@@ -29,6 +70,21 @@
   font-size: 3rem;
   margin-bottom: 1rem;
   color: var(--error-color, #ff6b6b);
+}
+
+/* Mobile loading state adjustments */
+@media (max-width: 768px) {
+  .loading-state,
+  .error-state {
+    min-height: 300px;
+    font-size: 1rem;
+    padding: 2rem;
+  }
+
+  .loading-state i,
+  .error-state i {
+    font-size: 2rem;
+  }
 }
 
 @keyframes spin {

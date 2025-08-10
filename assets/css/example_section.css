@@ -1,6 +1,16 @@
 /* --- Interactive Elements --- */
-
-.code-playground {
+/* Mobile section example adjustments */
+@media (max-width: 768px) {
+  .section-example {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+}
+playground {
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid var(--secondary-color);
   border-radius: 6px;
@@ -15,6 +25,16 @@
   box-sizing: border-box;
 }
 
+/* Mobile adjustments for code playground */
+@media (max-width: 768px) {
+  .code-playground {
+    padding: 1rem;
+    gap: 1rem;
+    min-height: auto;
+    margin-top: 1rem;
+  }
+}
+
 .section-example {
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid var(--secondary-color);
@@ -24,11 +44,28 @@
   margin: 2rem 0rem;
 }
 
+/* Mobile section example adjustments */
+@media (max-width: 768px) {
+  .section-example {
+    padding: 1rem 0;
+    margin: 1rem 0;
+    border-radius: 4px;
+  }
+}
+
 .editor-sandbox-container {
   display: grid;
   grid-template-columns: minmax(0, 60%) minmax(0, 40%);
   gap: 2rem;
   width: 100%;
+}
+
+/* Mobile responsiveness - stack editor and preview vertically */
+@media (max-width: 768px) {
+  .editor-sandbox-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 }
 
 .editor-container {
@@ -40,10 +77,26 @@
   overflow: hidden; /* Prevent any potential overflow */
 }
 
+/* Mobile editor container adjustments */
+@media (max-width: 768px) {
+  .editor-container {
+    gap: 0.75rem;
+    order: 1; /* Put editor first on mobile */
+  }
+}
+
 .visualization-container {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+/* Mobile visualization container adjustments */
+@media (max-width: 768px) {
+  .visualization-container {
+    gap: 0.75rem;
+    order: 2; /* Put visualization after editor on mobile */
+  }
 }
 
 .jsEditor {
@@ -59,6 +112,14 @@
   box-shadow: inset 0 0 0 1px var(--border-color);
 }
 
+/* Mobile editor adjustments */
+@media (max-width: 768px) {
+  .jsEditor {
+    min-height: 300px;
+    border-radius: 6px;
+  }
+}
+
 .jsEditor .CodeMirror {
   height: 100%;
   font-family: var(--font-code);
@@ -66,6 +127,15 @@
   line-height: 1.6;
   padding: 1rem;
   background: var(--bg-color) !important;
+}
+
+/* Mobile CodeMirror adjustments */
+@media (max-width: 768px) {
+  .jsEditor .CodeMirror {
+    font-size: 14px;
+    padding: 0.75rem;
+    line-height: 1.4;
+  }
 }
 
 .run-button {
@@ -109,6 +179,15 @@
   padding-bottom: 0.5rem;
 }
 
+/* Mobile sandbox content adjustments */
+@media (max-width: 768px) {
+  .sandbox-content h3 {
+    font-size: var(--font-size-base);
+    margin: 0 0 0.75rem 0;
+    padding-bottom: 0.4rem;
+  }
+}
+
 .previewArea {
   flex: 1;
   min-height: 300px;
@@ -119,6 +198,14 @@
   overflow: hidden;
   /* Browser-like appearance */
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile preview adjustments */
+@media (max-width: 768px) {
+  .previewArea {
+    min-height: 250px;
+    order: 2; /* Put preview after editor on mobile */
+  }
 }
 
 .previewArea iframe {
@@ -168,6 +255,16 @@
   height: 400px;
   position: relative;
   margin-top: 1rem;
+}
+
+/* Mobile DOM tree adjustments */
+@media (max-width: 768px) {
+  .domTree {
+    min-height: 300px;
+    height: 300px;
+    border-radius: 6px;
+    margin-top: 0.75rem;
+  }
 }
 
 /* Style the links (lines) of the graph */

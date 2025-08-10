@@ -22,6 +22,19 @@ button:hover {
   box-shadow: 0 0 12px var(--glow-color);
 }
 
+/* Mobile button adjustments */
+@media (max-width: 768px) {
+  button {
+    padding: 0.75rem 1rem;
+    font-size: 14px;
+    min-height: 44px; /* Touch target size */
+  }
+
+  button:hover {
+    transform: scale(1.02); /* Less aggressive scaling on mobile */
+  }
+}
+
 .dark-mode-toggle {
   position: fixed;
   top: 2rem;
@@ -51,8 +64,23 @@ button:hover {
   text-shadow: var(--glow-secondary);
 }
 
+/* Mobile dark mode toggle adjustments */
+@media (max-width: 768px) {
+  .dark-mode-toggle {
+    top: 15px;
+    right: 70px; /* Position next to hamburger menu with safe distance */
+    width: 40px;
+    height: 40px;
+    z-index: 999; /* Lower than header toggle */
+  }
+
+  .dark-mode-toggle i {
+    font-size: 1rem;
+  }
+}
+
 /* Light theme styles */
-body[data-theme='light'] {
+body[data-theme="light"] {
   --bg-color: rgba(240, 248, 255, 1);
   --primary-color: rgba(20, 30, 50, 0.95);
   --secondary-color: rgba(60, 80, 120, 0.8);
@@ -62,11 +90,11 @@ body[data-theme='light'] {
   --border-color: rgba(100, 150, 255, 0.3);
 }
 
-body[data-theme='light'] .dark-mode-toggle {
+body[data-theme="light"] .dark-mode-toggle {
   background: var(--card-bg);
   border-color: var(--primary-color);
 }
 
-body[data-theme='light'] .dark-mode-toggle i {
+body[data-theme="light"] .dark-mode-toggle i {
   color: var(--primary-color);
 }
